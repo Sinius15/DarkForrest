@@ -26,11 +26,5 @@ public class Action extends Main{
 		function.ClearColor(letterAantal);
 		function.ResetAllFiedls(letterAantal);
 	}};}
-	
-	public ActionListener Enter() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maakt alle velden leeg
-		
-	}};}
-	
-	
 
 }

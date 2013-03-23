@@ -42,7 +42,7 @@ public class Config extends Main{
 	
 	void Make(){
 		file.CreateFile(configPath);
-		file.OpenConfig("res/Config.ini", 3);
+		file.OpenConfig("rec/Config.ini", 3);
 		file.WriteConfigFile(configPath);
 		
 	}

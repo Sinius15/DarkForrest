@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileHandler extends Main{
 
-	void openSafe(String path, int naam){
+	void openSafe(String path, int naam){															//open een file, regels met ## worden genegeerd
 		try{   
 			scanner = new Scanner(new File(path));  
 			teller1 = 1;
@@ -27,8 +27,8 @@ public class FileHandler extends Main{
 		}
 		catch(Exception e){  System.out.println("could not find the file");   }
 	}
-	
-	void open(String path, int naam){
+				
+	void open(String path, int naam){																//open een file, zonder controle voor ##
 		try{   
 			scanner = new Scanner(new File(path));  
 			teller1 = 1;
@@ -42,7 +42,7 @@ public class FileHandler extends Main{
 		catch(Exception e){  System.out.println("could not find the file");   }
 	}
 	
-	void CreateFile(File file){
+	void CreateFile(File file){																		//maakt een leeg bestandje
 		try{
 			if(file.createNewFile()){
 				System.out.println("File is created!");	
@@ -56,7 +56,7 @@ public class FileHandler extends Main{
 		}
 	}
 	
-	void WriteSafeFile(File file){
+	void WriteSafeFile(File file){																	//om een woordzoeker op te slaan
 		try{   scanner = new Scanner(file);  }
 		catch(Exception e){  System.out.println("could not find the file");   }
 		
@@ -78,8 +78,8 @@ public class FileHandler extends Main{
 		
 	}
 
-	void OpenConfig(String path, int naam){
-		try{   
+	void OpenConfig(String path, int naam){															//opent de config file vanuit de rec map
+		try{  
 			scanner = new Scanner(new File(path));  
 			teller1 = 1;
 			while(scanner.hasNextLine()){
@@ -87,12 +87,13 @@ public class FileHandler extends Main{
 				System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
 				teller1++;
 				}
+			scanner.close();
 			}
-		catch(Exception e){  System.out.println("could not find the file");   }
-		scanner.close();
+		catch(Exception e){  System.out.println("could not find the Config file");   }
+		
 	}
 			
-	void WriteConfigFile(File file){
+	void WriteConfigFile(File file){																// vult de net aangemaakte config file
 		try{   scanner = new Scanner(file);  }
 		catch(Exception e){  System.out.println("could not find the file while in the WriteToFile Fucntion");   }
 

@@ -78,7 +78,7 @@ public class LegendsDarkApi
 	
 	public void Say(String txt)
 	{
-		System.out.println("thissDarkApi debug info: " + txt);
+		System.out.println("LegendsDarkApi debug info: " + txt);
 	}
 	
 	public void Frame(int hoogte, int breedte, String name)

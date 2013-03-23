@@ -1,23 +1,15 @@
 package solver.wordseeker;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.RenderingHints.Key;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.util.Random;
-import java.util.Scanner;
-import javax.swing.JFileChooser;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import java.awt.*;
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.filechooser.FileFilter;
-import api.LegendsDarkApi;
+import api.*;
 
 public class WordseekerSolver {
 
-	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
+
 
 	public static Font font = new Font("verdana", Font.BOLD, 25);	//het lettertype van alle dingen enzo
 	public static int letterHoogte = 0;									//hoeveel letters er in de hoogte zijn
@@ -42,7 +34,6 @@ public class WordseekerSolver {
 	public static char randomChar;										//gebruikt om een random char te maken, in combinatie met int random
 	public static Random random;										//random functie
 	public static File configPath = new File(System.getProperty("user.dir") + "\\Config.ini");
-	public static Key key;
 	JScrollPane scrollPane;
 	
 	public static Scanner scanner;										//gewoon een scanner voor inlezen fan files
@@ -50,7 +41,7 @@ public class WordseekerSolver {
 	public static String patternNumber = "[0-9]*";						//cijfer pattern	voor h3t testen of iets een cijfer is
 	public static String teVergelijkenWoord;							//het woord dat vergeleken gaat worden met gezochtWoord
 	public static String gezochtWoord;									//het woord dat gezocht wordt
-	public static String InportFile[][] = new String[500][100000];		//worden bestanden in opgeslagen, het eerste cijfer is de naam, het 2de is het hoeveelheids cijfer,  naam0 = config; naam1=woordenboek, naam2 = openWoordzoeker   
+	public static String InportFile[][] = new String[10][100000];		//worden bestanden in opgeslagen, het eerste cijfer is de naam, het 2de is het hoeveelheids cijfer,  naam0 = config; naam1=woordenboek, naam2 = openWoordzoeker   
 	public static String path;											//wordt gebruikt als Pad naar bestanden
 	
 	public static Zoeker zoeker = new Zoeker();							//deze alinia is voor het objectgeorienteerd programmeren, objecten
@@ -83,13 +74,27 @@ public class WordseekerSolver {
 	public static boolean zoekVerticaal = true;
 	public static boolean zoekDiagonaal = true;
 	public static BufferedWriter out;
+			/*hieronder alles voor GUI layout*/
+	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
+	public static JFrame startupScreen;
+	public static JFrame mainScreen;
+	public static JFrame about;
+	public static JFrame results;
+			/*-------------------------------*/
+	
+	
 	
 	public static void main(String[] args) {
 		l.Init();
+		
+		if(config.Init() == false){
+			config.Make();
+			config.Init();
+		}
+		
 		l.Frame(500, 500, "test");
 		
 		teller1 = 1;
-
 		while(teller1 < 7){
 		teller2 = 1;
 			while(teller2<7){

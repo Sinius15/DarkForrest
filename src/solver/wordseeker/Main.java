@@ -87,15 +87,9 @@ public class Main{
 	
 	public static JTextField[][] letterVeld;
 	
-	public static void main (String[] args) 
-	{
-		l.textfieldMax = 500;
-		l.textfieldTeller = 1;
-		l.Init();
-		if(config.Init() == false){
-			config.Make();
-			config.Init();
-		}
+	public static void main (String[] args){
+		
+
 		drawer.DrawGUI1();
 		drawer.DrawGUI2();
 		file.openSafe("res/woordenboek.txt", 1);
