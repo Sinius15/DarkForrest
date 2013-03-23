@@ -21,6 +21,7 @@ public class LegendsDarkApi
 	public JMenu[] menu = new JMenu[100];
 	public JMenuItem[] menuitem = new JMenuItem[100];
 	public JCheckBoxMenuItem[] checkboxmenuitem = new JCheckBoxMenuItem[100];
+	public JRadioButtonMenuItem[] radiobuttonmenuitem = new JRadioButtonMenuItem[100];
 	public int frameTeller = 0;
 	public int labelTeller = 0;
 	public int buttonTeller = 0;
@@ -37,6 +38,7 @@ public class LegendsDarkApi
 	public int menuTeller = 0;
 	public int menuitemTeller = 0;
 	public int checkboxmenuitemTeller = 0;
+	public int radiobuttonmenuitemTeller = 0;
 	
 	public int frameMax = 100;
 	public int labelMax = 100;
@@ -53,6 +55,7 @@ public class LegendsDarkApi
 	public int menuMax = 100;
 	public int menuitemMax = 100;
 	public int checkboxmenuitemMax = 100;
+	public int radiobuttonmenuitemMax = 100;
 	
 	public void Init(){
 		frame = new JFrame[frameMax];
@@ -251,5 +254,10 @@ public class LegendsDarkApi
 		}
 	}
 	
+	public void RadioButtonMenuItem(String txt,boolean check ,int menuNr) {
+		this.radiobuttonmenuitem[this.radiobuttonmenuitemTeller] = new JRadioButtonMenuItem(txt, check);
+		this.menu[menuNr].add(this.radiobuttonmenuitem[this.radiobuttonmenuitemTeller]);
+		this.radiobuttonmenuitemTeller++;
+	}
 }
 
