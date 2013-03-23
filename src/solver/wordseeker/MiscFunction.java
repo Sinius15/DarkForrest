@@ -4,7 +4,7 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-public class MiscFunction extends Main{
+public class MiscFunction extends WordseekerSolver{
 
 	void ResetAllFiedls(int TotalFieldNr){
 		inWelkHokjeIkBen = 1;

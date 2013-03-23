@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class MenuBar extends Main{
+public class MenuBar extends WordseekerSolver{
 
 	void StartupScherm(){
 		l.Menubar(0);

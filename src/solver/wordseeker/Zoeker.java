@@ -1,6 +1,6 @@
 package solver.wordseeker;
 
-public class Zoeker extends Main{
+public class Zoeker extends WordseekerSolver{
 	
 	
 	Boolean ZoekWoord(String woordDatJeZoekt){

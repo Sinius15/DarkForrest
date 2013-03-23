@@ -56,7 +56,7 @@ public class WordseekerSolver {
 	public static LegendsDarkApi l = new LegendsDarkApi();
 	
 	public static JFileChooser filechooser;								//deze alinea is voor het filechooser gebeuren.
-	public static FileFilter filefilter ;
+	public static javax.swing.filechooser.FileFilter filefilter ;
 	public static String fileOutString;
 	public static File fileOut;
 	
@@ -76,41 +76,57 @@ public class WordseekerSolver {
 	public static BufferedWriter out;
 			/*hieronder alles voor GUI layout*/
 	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
+	
 	public static JFrame startupScreen;
 	public static JFrame mainScreen;
 	public static JFrame about;
 	public static JFrame results;
-			/*-------------------------------*/
-	
+	public static JPanel startupScreenPanel = new JPanel(new GridBagLayout());
+	public static JPanel mainScreenPanel = new JPanel(new GridBagLayout());;
+	public static JPanel aboutPanel = new JPanel(new GridBagLayout());;
+	public static JPanel resultsPanel = new JPanel(new GridBagLayout());;
+	public static GridBagConstraints[] startupScreenBag = new GridBagConstraints[100];
 	
 	
 	public static void main(String[] args) {
-		l.Init();
+		startupScreen = new JFrame("Woordzoeker Solver");
+		startupScreen.setVisible(true);
+		startupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		startupScreen.setSize(400, 400);
+		startupScreen.setLocationRelativeTo(null);
+		startupScreen.add(startupScreenPanel);
 		
-		if(config.Init() == false){
-			config.Make();
-			config.Init();
-		}
 		
-		l.Frame(500, 500, "test");
 		
+		
+		
+		//if(config.Init() == false){
+		//	config.Make();
+		//	config.Init();
+		//}
+		
+		//file.openSafe("rec/woordenboek.txt", 1);
+		
+		teller3 = 1;
 		teller1 = 1;
 		while(teller1 < 7){
 		teller2 = 1;
 			while(teller2<7){
-				
-				letterVeld[teller1][teller2] = new JTextField("hey");
-				
-				letterVeld[teller1][teller2].setPreferredSize(new Dimension(15, 15));
-				l.Gridbag(teller1, teller2, 1, 1, 0);
-				l.panel[0].add(letterVeld[teller1][teller2], l.gridBag[l.gridbagTeller]);
-				l.frame[0].revalidate();
+				letterVeld[teller1][teller2] = new JTextField();
+				letterVeld[teller1][teller2].setPreferredSize(new Dimension(25, 25));
+				startupScreenBag[teller3] = new GridBagConstraints();
+				startupScreenBag[teller3].gridx = teller1;
+				startupScreenBag[teller3].gridy = teller2;
+				startupScreenBag[teller3].gridheight = 100;
+				startupScreenBag[teller3].gridwidth = 100;
+				startupScreenPanel.add(letterVeld[teller1][teller2], startupScreenBag[teller3]);
 				teller2++;
-
+				teller3++;
+				System.out.println(teller3);
 			}
 		teller1++;
 		}
-
+		startupScreen.revalidate();
 	}
 
 }

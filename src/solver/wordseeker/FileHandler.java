@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FileHandler extends Main{
+public class FileHandler extends WordseekerSolver{
 
 	void openSafe(String path, int naam){															//open een file, regels met ## worden genegeerd
 		try{   

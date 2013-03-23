@@ -1,6 +1,6 @@
 package solver.wordseeker;
 
-public class GetLetter extends Main{
+public class GetLetter extends WordseekerSolver{
 
 	String Up(int nr){
 		inWelkHokjeIkBenMetGet = nr - letterBreedte;

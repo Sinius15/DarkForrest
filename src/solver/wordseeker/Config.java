@@ -5,7 +5,7 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 
-public class Config extends Main{
+public class Config extends WordseekerSolver{
 	
 	boolean Init(){
 		try{

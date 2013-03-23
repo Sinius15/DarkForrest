@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
-public class GuiDrawer extends Main {
+public class GuiDrawer extends WordseekerSolver {
 	/*
 	 * in deze class file staan alle functies die frames maken en invullen
 	 * menu bars staan in de class MenuBar

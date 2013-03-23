@@ -1,6 +1,6 @@
 package solver.wordseeker;
 
-public class Checker extends Main{
+public class Checker extends WordseekerSolver{
 
 	boolean CheckIfValidAlleHokjes(){
 		teller1 = 1;

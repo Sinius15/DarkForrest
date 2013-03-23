@@ -3,7 +3,7 @@ package solver.wordseeker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Action extends Main{
+public class Action extends WordseekerSolver{
 	/*
 	 * het klopt dat deze class file overbodig is, maar ik vind het handig als de code overzichtelijk blijft,
 	 * zo staan hier wat actionlistners die in de weg stonden of die vaker gebruikt worden.
@@ -26,5 +26,13 @@ public class Action extends Main{
 		function.ClearColor(letterAantal);
 		function.ResetAllFiedls(letterAantal);
 	}};}
-
+	
+	public ActionListener StarterButton() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maakt alle velden leeg
+		if(checker.CheckIfValidStartScreen() == true){
+			letterBreedte = Integer.parseInt(l.textfield[1].getText());
+			letterHoogte = Integer.parseInt(l.textfield[2].getText());
+			l.frame[0].dispose();
+			drawer.DrawGUI3(letterHoogte, letterBreedte);
+		}
+	}};}
 }
