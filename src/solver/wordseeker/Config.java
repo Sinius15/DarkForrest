@@ -25,6 +25,8 @@ public class Config extends WordseekerSolver{
 		zoekVerticaal = Boolean.parseBoolean(InportFile[0][23]);
 		zoekDiagonaal = Boolean.parseBoolean(InportFile[0][24]);
 		
+		laadWoordenboek = Boolean.parseBoolean(InportFile[0][25]);
+		
 		font1 = new Font("verdana", Font.BOLD, 25);
 		font2 = new Font("verdana", Font.BOLD, 15);
 		

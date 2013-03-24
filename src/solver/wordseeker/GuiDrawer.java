@@ -65,6 +65,14 @@ public class GuiDrawer extends WordseekerSolver {
 			teller2 = 0;
 			while(teller2 < letterBreedte){
 				l.Textfield(50, 50, 1, 1, teller2, teller1, "", 1);
+				
+				
+				
+				
+				
+				
+				
+				
 				l.textfield[teller3].setFont(font);
 				l.textfield[teller3].setBackground(textfieldColor);
 				l.textfield[teller3].setBorder(emptyBorder);

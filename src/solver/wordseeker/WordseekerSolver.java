@@ -1,6 +1,8 @@
 package solver.wordseeker;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -73,6 +75,7 @@ public class WordseekerSolver {
 	public static boolean zoekHorizontaal = true;
 	public static boolean zoekVerticaal = true;
 	public static boolean zoekDiagonaal = true;
+	public static boolean laadWoordenboek = true;
 	public static BufferedWriter out;
 			/*hieronder alles voor GUI layout*/
 	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
@@ -87,46 +90,38 @@ public class WordseekerSolver {
 	public static JPanel resultsPanel = new JPanel(new GridBagLayout());;
 	public static GridBagConstraints[] startupScreenBag = new GridBagConstraints[100];
 	
+	public static JTextField letterBreedteInput;
+	public static JTextField letterHoogteInput;
+	
 	
 	public static void main(String[] args) {
-		startupScreen = new JFrame("Woordzoeker Solver");
-		startupScreen.setVisible(true);
-		startupScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		startupScreen.setSize(400, 400);
-		startupScreen.setLocationRelativeTo(null);
-		startupScreen.add(startupScreenPanel);
-		
-		
-		
-		
-		
-		//if(config.Init() == false){
-		//	config.Make();
-		//	config.Init();
-		//}
-		
-		//file.openSafe("rec/woordenboek.txt", 1);
-		
-		teller3 = 1;
-		teller1 = 1;
-		while(teller1 < 7){
-		teller2 = 1;
-			while(teller2<7){
-				letterVeld[teller1][teller2] = new JTextField();
-				letterVeld[teller1][teller2].setPreferredSize(new Dimension(25, 25));
-				startupScreenBag[teller3] = new GridBagConstraints();
-				startupScreenBag[teller3].gridx = teller1;
-				startupScreenBag[teller3].gridy = teller2;
-				startupScreenBag[teller3].gridheight = 100;
-				startupScreenBag[teller3].gridwidth = 100;
-				startupScreenPanel.add(letterVeld[teller1][teller2], startupScreenBag[teller3]);
-				teller2++;
-				teller3++;
-				System.out.println(teller3);
-			}
-		teller1++;
+		l.textfieldTeller = 1;
+		l.textfieldMax = 500;
+		l.Init();
+		if(config.Init() == false){
+			config.Make();
+			config.Init();
 		}
-		startupScreen.revalidate();
+		
+		if(laadWoordenboek){
+			file.openSafe("rec/woordenboek.txt", 1);
+		}
+		
+		drawer.DrawGUI1();
+		drawer.DrawGUI2();
+		file.openSafe("res/woordenboek.txt", 1);
+
+		l.button[0].addActionListener(new ActionListener() {@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(checker.CheckIfValidStartScreen() == true){
+					letterBreedte = Integer.parseInt(l.textfield[1].getText());
+					letterHoogte = Integer.parseInt(l.textfield[2].getText());
+					l.frame[0].dispose();
+					drawer.DrawGUI3(letterHoogte, letterBreedte);
+				}
+		}});
+		
+		
 	}
 
 }

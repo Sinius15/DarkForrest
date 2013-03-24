@@ -25,7 +25,7 @@ public class LegendsDarkApi
 	public int frameTeller = 0;
 	public int labelTeller = 0;
 	public int buttonTeller = 0;
-	public int gridbagTeller = -1;
+	public int gridbagTeller = 1;
 	public int panelTeller = 0;
 	public int textfieldTeller = 0;
 	public int checkboxTeller = 0;
@@ -114,7 +114,17 @@ public class LegendsDarkApi
   		this.gridBag[this.gridbagTeller].gridwidth = width;
   		this.gridBag[this.gridbagTeller].anchor = GridBagConstraints.NORTHWEST;
   		this.frame[frameNumber].revalidate();
-		
+	} 
+  	
+  	public void GridbagNew(int Xcoord, int Ycoord, int width, int height)
+	{
+  		this.gridBag[this.gridbagTeller] = new GridBagConstraints();
+  		this.gridBag[this.gridbagTeller].insets = new Insets(1, 1, 1, 1);
+  		this.gridBag[this.gridbagTeller].gridx = Xcoord;
+  		this.gridBag[this.gridbagTeller].gridy = Ycoord;
+  		this.gridBag[this.gridbagTeller].gridheight = height;
+  		this.gridBag[this.gridbagTeller].gridwidth = width;
+  		this.gridBag[this.gridbagTeller].anchor = GridBagConstraints.NORTHWEST;
 	} 
   	
 	public void Button(int hoogte, int breedte,int gridhoogte, int gridbreedte, int Xcoord, int Ycoord, String naam, int frameNumber)
