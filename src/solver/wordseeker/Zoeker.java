@@ -17,14 +17,11 @@ public class Zoeker extends WordseekerSolver{
 			function.Message("Stop", "Je moet bij instellingen minstens één hokje hebben aangevinkt!");
 			return false;
 		}
-		else{
-			while(inWelkHokjeIkBen<=letterAantal){
-				welkeKantOp = 1;
+else{
+	while(letterVeldYcoord<=letterHoogte){
+		while(letterVeldXcoord<=letterBreedte){
+			welkeKantOp = 1;
 				while(welkeKantOp <= 8){
-					lengteGezochtWoordTeller1 = 1;
-					inWelkHokjeIkBenMetGet = inWelkHokjeIkBen;
-					teVergelijkenWoord = l.textfield[inWelkHokjeIkBen].getText();
-					inWelkHokjeIkBenMetGetArrayTeller = 2;
 					while(lengteGezochtWoord > lengteGezochtWoordTeller1){   //maakt het teVergelijkenWoord
 						if(welkeKantOp == 1 && l.checkboxmenuitem[1].getState()){   
 							teVergelijkenWoord = teVergelijkenWoord + get.Up(inWelkHokjeIkBenMetGet);
@@ -53,6 +50,7 @@ public class Zoeker extends WordseekerSolver{
 						else{}
 						lengteGezochtWoordTeller1++;
 					}
+					
 					if(checker.Controleer(teVergelijkenWoord, gezochtWoord) == true){
 						l.textfield[inWelkHokjeIkBen].setBackground(output1Color);
 						lengteGezochtWoordTeller2 = 2;
@@ -62,18 +60,24 @@ public class Zoeker extends WordseekerSolver{
 						}
 					return true;
 					}
-					else{
-					}
+					else{}
 					welkeKantOp++;
 				}
-				inWelkHokjeIkBenMetGet++;
-				inWelkHokjeIkBen++;
-				
-			}
-			return false;
+			letterVeldXcoord++;
 		}
-		
+		letterVeldYcoord++;	
 	}
+	return false;
+}
+		
+		
+		
+		
+		
+		
+}
+		
+	
 	
 	void zoekAlleWoorden(){
 		drawer.Outputscherm();

@@ -1,5 +1,6 @@
 package solver.wordseeker;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,6 +9,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class GuiDrawer extends WordseekerSolver {
 	/*
@@ -54,31 +56,30 @@ public class GuiDrawer extends WordseekerSolver {
 	void DrawGUI3(int letterHoogte, int letterBreedte){		//maakt het 2de scherm met alle hokjes
 		l.textfieldTeller = 1;
 		l.labelTeller = 1;
+		l.frameTeller = 1;
 		frameHoogte = letterHoogte * 50 + (letterHoogte *10) + 600;
 		frameBreedte = letterBreedte * 50 + (letterBreedte *10) + 400;
 		letterAantal = letterHoogte * letterBreedte;
 		l.frame[1].setVisible(true);
 		l.frame[1].setSize(frameBreedte, frameHoogte);
 		
-		teller1 = 0;
+		teller1 = 1;
 		while(teller1 < letterHoogte){
-			teller2 = 0;
+			teller2 = 1;
 			while(teller2 < letterBreedte){
-				l.Textfield(50, 50, 1, 1, teller2, teller1, "", 1);
 				
-				
-				
-				
-				
-				
-				
-				
-				l.textfield[teller3].setFont(font);
-				l.textfield[teller3].setBackground(textfieldColor);
-				l.textfield[teller3].setBorder(emptyBorder);
-				l.textfield[teller3].setForeground(textColor);
+				letterVeld[teller1][teller2] = new JTextField("");
+				letterVeld[teller1][teller2].setVisible(true);
+				letterVeld[teller1][teller2].setPreferredSize(new Dimension(50, 50));
+				l.Gridbag(teller1, teller2, 1, 1, 1);
+				l.panel[1].add(letterVeld[teller1][teller2], l.gridBag[l.gridbagTeller]);
+				letterVeld[teller1][teller2].setFont(font);
+				letterVeld[teller1][teller2].setBackground(textfieldColor);
+				letterVeld[teller1][teller2].setBorder(emptyBorder);
+				letterVeld[teller1][teller2].setForeground(textColor);
 				teller3++;
 				teller2++;
+				l.frame[0].revalidate();
 			}
 			teller1++;
 		}
@@ -91,9 +92,9 @@ public class GuiDrawer extends WordseekerSolver {
 		
 		
 		l.label[1].setForeground(textColor);
-		l.textfield[teller3].setBackground(textfieldColor);
-		l.textfield[teller3].setBorder(emptyBorder);
-		l.textfield[teller3].setForeground(textColor);
+		l.textfield[1].setBackground(textfieldColor);
+		l.textfield[1].setBorder(emptyBorder);
+		l.textfield[1].setForeground(textColor);
 		bar.MainScherm();
 
 		l.button[1].addActionListener(new ActionListener() {@Override

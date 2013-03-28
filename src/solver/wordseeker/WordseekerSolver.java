@@ -30,6 +30,8 @@ public class WordseekerSolver {
 	public static int inWelkHokjeIkBenMetGet;							//inwelkhokje ik ben met getfuncties,  is nodig om meerdere keren een getfunctie boven op elkaar te doen
 	public static int inWelkHokjeIkBenMetGetArray[] = new int[100];     //slaat op welke hokjes zijn gebruikt om het te vergelijken woord te maken.
 	public static int inWelkHokjeIkBenMetGetArrayTeller;				//om te kijken wel getal te gebruiken in "inWelkHokjeIkBenMetGetArray[]"
+	public static int letterVeldXcoord;
+	public static int letterVeldYcoord;
 	public static int lengteGezochtWoord;								//lengte van het woord wat gezocht moet worden
 	public static int welkeKantOp;										//welke kan hij aan het zoeken is.  kan 1-9 zijn,   1 is omhoog, 2 rechtsboven, 3rechts enzovoort
 	public static int returnErrorNR;									//geeft aan of het ophalen van de file gelukt is  0=ja  1=nee		//----------KAN DIT GEEN BOOLEAN WORDEN< TODO
