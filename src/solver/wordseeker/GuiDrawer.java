@@ -43,6 +43,14 @@ public class GuiDrawer extends WordseekerSolver {
 		bar.StartupScherm();
 		l.frame[0].setResizable(false);
 		l.frame[0].pack();
+		
+		l.textfield[1].requestFocus();
+		
+		l.panel[0].addKeyListener(keyHandler1);
+		l.textfield[1].addKeyListener(keyHandler1);
+		l.textfield[2].addKeyListener(keyHandler1);
+		
+
 	}
 	
 	void DrawGUI2(){		//maakt een klein onzichtbaar scherm tijdens opstarten voor het later maken van GUI3
@@ -62,11 +70,12 @@ public class GuiDrawer extends WordseekerSolver {
 		letterAantal = letterHoogte * letterBreedte;
 		l.frame[1].setVisible(true);
 		l.frame[1].setSize(frameBreedte, frameHoogte);
+		bar.MainScherm();
 		
 		teller1 = 1;
-		while(teller1 < letterHoogte){
+		while(teller1 <= letterHoogte){
 			teller2 = 1;
-			while(teller2 < letterBreedte){
+			while(teller2 <= letterBreedte){
 				
 				letterVeld[teller1][teller2] = new JTextField("");
 				letterVeld[teller1][teller2].setVisible(true);
@@ -77,15 +86,17 @@ public class GuiDrawer extends WordseekerSolver {
 				letterVeld[teller1][teller2].setBackground(textfieldColor);
 				letterVeld[teller1][teller2].setBorder(emptyBorder);
 				letterVeld[teller1][teller2].setForeground(textColor);
+				letterVeld[teller1][teller2].addKeyListener(keyHandler2);
 				teller3++;
 				teller2++;
 				l.frame[0].revalidate();
 			}
 			teller1++;
 		}
-		l.Label(20, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte, 0, (teller1), "Dit woord zoek ik:", 1);
-		l.Textfield(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte, 0, (teller1+1), "", 1);
-		l.Button(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte, 0, (teller1+2), "Zoek woord!", 1);
+		l.Label(20, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1), "Dit woord zoek ik:", 1);
+		l.Textfield(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+1), "", 1);
+		l.Button(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+2), "Zoek woord!", 1);
+		
 		l.button[1].setBackground(buttonColor);
 		l.button[1].setBorder(emptyBorder);
 		l.button[1].setForeground(textColor);
@@ -95,18 +106,19 @@ public class GuiDrawer extends WordseekerSolver {
 		l.textfield[1].setBackground(textfieldColor);
 		l.textfield[1].setBorder(emptyBorder);
 		l.textfield[1].setForeground(textColor);
-		bar.MainScherm();
+		l.textfield[1].addKeyListener(keyHandler2);		
 
 		l.button[1].addActionListener(new ActionListener() {@Override
 			public void actionPerformed(ActionEvent e) {
 				if(checker.CheckIfValidAlleHokjes() == true){
 					if(l.radiobuttonmenuitem[0].isSelected()){
-						function.ClearColor(letterAantal);
-						zoeker.zoekAlleWoorden();
+						function.ClearColor();
+						//zoeker.zoekAlleWoorden();
+						function.Message("Sorry", "Dit deel is nog onder consturctie.");
 					}
 					else{
-						function.ClearColor(letterAantal);
-						zoeker.ZoekWoord(l.textfield[(letterAantal+1)].getText());
+						function.ClearColor();
+						zoeker.ZoekWoord(l.textfield[(1)].getText());
 					}
 					
 				}else{}
@@ -114,9 +126,10 @@ public class GuiDrawer extends WordseekerSolver {
 		
 		l.frame[1].revalidate();
         l.frame[1].setResizable(false);
-        l.frame[1].pack();
         l.frame[1].setLocationRelativeTo(null);
+        l.frame[1].pack();
         
+        letterVeld[1][1].requestFocus();
 	}
 
 	void DrawGUI4(){		//maakt het About schermpje

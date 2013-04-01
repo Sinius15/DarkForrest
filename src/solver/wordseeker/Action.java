@@ -18,16 +18,16 @@ public class Action extends WordseekerSolver{
 	}};}
 	
 	public ActionListener VulAlleVelden() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //vult alle velden
-		function.ClearColor(letterAantal);
+		function.ClearColor();
 		function.FillAllFields(letterAantal);
 	}};}
 
 	public ActionListener LeegAlleVelden() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maakt alle velden leeg
-		function.ClearColor(letterAantal);
-		function.ResetAllFiedls(letterAantal);
+		function.ClearColor();
+		function.ResetAllFiedls();
 	}};}
 	
-	public ActionListener StarterButton() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maakt alle velden leeg
+	public ActionListener Start() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
 		if(checker.CheckIfValidStartScreen() == true){
 			letterBreedte = Integer.parseInt(l.textfield[1].getText());
 			letterHoogte = Integer.parseInt(l.textfield[2].getText());

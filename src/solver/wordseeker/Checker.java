@@ -4,31 +4,33 @@ public class Checker extends WordseekerSolver{
 
 	boolean CheckIfValidAlleHokjes(){
 		teller1 = 1;
-		teller3 = 0;
-		gezochtWoord = l.textfield[(letterAantal+1)].getText();
-		while(teller1 < (letterAantal+1)){
-			gezochtWoord = l.textfield[teller1].getText();
-			teller2 = gezochtWoord.length();
-
-			if(gezochtWoord.isEmpty() == true){
-				function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!");
-				return false;
+		while(teller1 < letterHoogte){
+			teller2 = 1;
+			while(teller2 < letterBreedte){
+				gezochtWoord = letterVeld[teller1][teller2].getText();
+				teller3 = gezochtWoord.length();
+				if(gezochtWoord.isEmpty() == true){
+					function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!1");
+					return false;
+				}
+				else if(gezochtWoord.matches(patternLetter) == false){
+					function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!2");
+					return false;
+				}
+				else if(teller3 != 1){
+					function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!3");
+					return false;
+				}
+				else if(gezochtWoord.matches(patternLetter) == false){
+					function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!4");
+					return false;
+				}
+				else{}
+				teller2++;
 			}
-			else if(gezochtWoord.matches(patternLetter) == false){
-				function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!");
-				return false;
-			}
-			else if(teller2 != 1){
-				function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!");
-				return false;
-			}
-			else if(gezochtWoord.matches(patternLetter) == false){
-				function.Message("STOP", "Je hebt de woordzoeker niet goed ingevuld! Overal moet 1 letter staan!");
-				return false;
-			}
-			else{}
 			teller1++;
 		}
+		System.out.println("Klaar met controlere!");
 		return true;
 		
 	}
@@ -50,12 +52,4 @@ public class Checker extends WordseekerSolver{
 		else{return true;}
 	}
 	
-	boolean Controleer(String vergelijk1, String vergelijk2){
-		if(vergelijk1.equals(vergelijk2)){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
 }

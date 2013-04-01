@@ -4,73 +4,81 @@ public class GetLetter extends WordseekerSolver{
 
 	String Up(int Xcoord, int Ycoord){
 		if(Ycoord-1 >= 1){
-			return letterVeld[Xcoord][Ycoord-1].getText();
+			welkeCoordsHebIkNetBekeken[Xcoord][Ycoord-1] = true;
+			return letterVeld[Xcoord][(Ycoord-1)].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String Down(int Xcoord, int Ycoord){
-		if(Ycoord+1 >= letterHoogte){
+		if(Ycoord+1 <= letterHoogte){
+			welkeCoordsHebIkNetBekeken[Xcoord][Ycoord+1] = true;
 			return letterVeld[Xcoord][Ycoord+1].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String Right(int Xcoord, int Ycoord){
 		if(Xcoord+1 <= letterBreedte){
+			welkeCoordsHebIkNetBekeken[Xcoord+1][Ycoord] = true;
 			return letterVeld[Xcoord+1][Ycoord].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String Left(int Xcoord, int Ycoord){
 		if(Xcoord-1 >= 1){
+			welkeCoordsHebIkNetBekeken[Xcoord-1][Ycoord] = true;
 			return letterVeld[Xcoord-1][Ycoord].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 
 	String LeftUp(int Xcoord, int Ycoord){
-		if(Xcoord-1 > 0 && Ycoord+1 > 0){
-			return letterVeld[Xcoord-1][Ycoord+1].getText();
+		if(Xcoord-1 >= 1 && Ycoord-1 >= 1){
+			welkeCoordsHebIkNetBekeken[Xcoord-1][Ycoord-1] = true;
+			return letterVeld[Xcoord-1][Ycoord-1].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String RightUp(int Xcoord, int Ycoord){
-		if(Xcoord+1 <= letterBreedte && Ycoord+1 <= letterHoogte){
-			return letterVeld[Xcoord+1][Ycoord+1].getText();
+		if(Xcoord+1 <= letterBreedte && Ycoord-1 >= 1){
+			welkeCoordsHebIkNetBekeken[Xcoord+1][Ycoord-1] = true;
+			return letterVeld[Xcoord+1][Ycoord-1].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String LeftDown(int Xcoord, int Ycoord){
-		if(Xcoord-1 >= 1 && Ycoord-1 <= letterHoogte){
-			return letterVeld[Xcoord-1][Ycoord-1].getText();
+		if(Xcoord-1 >= 1 && Ycoord+1 <= letterHoogte){
+			welkeCoordsHebIkNetBekeken[Xcoord-1][Ycoord+1] = true;
+			return letterVeld[Xcoord-1][Ycoord+1].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 	
 	String RightDown(int Xcoord, int Ycoord){
-		if(Xcoord+1 <= letterBreedte && Ycoord-1 >= 1){
-			return letterVeld[Xcoord+1][Ycoord-1].getText();
+		if(Xcoord+1 <= letterBreedte && Ycoord+1 <= letterHoogte){
+			welkeCoordsHebIkNetBekeken[Xcoord+1][Ycoord+1] = true;
+			return letterVeld[Xcoord+1][Ycoord+1].getText();
 		}
 		else{
-			return "";
+			return "_";
 		}
 	}
 }

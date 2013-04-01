@@ -1,93 +1,82 @@
 package solver.wordseeker;
 
 public class Zoeker extends WordseekerSolver{
-	
-	
-	Boolean ZoekWoord(String woordDatJeZoekt){
 
-		
-		
+	void ZoekWoord(String woordDatJeZoekt){
+		teller1 = 1;
 		teller2 = 1;
-		inWelkHokjeIkBen = 1;
-		gezochtWoord = woordDatJeZoekt;
-		lengteGezochtWoord = gezochtWoord.length();
-		lengteGezochtWoordTeller1 = 1;
+		teller3 = 1;
+		lengteWoordDatJeZoekt = woordDatJeZoekt.length();
 		
-		if(l.checkboxmenuitem[0].getState() == false && l.checkboxmenuitem[1].getState() == false && l.checkboxmenuitem[2].getState() == false){
-			function.Message("Stop", "Je moet bij instellingen minstens één hokje hebben aangevinkt!");
+		function.ClearColor();
+		function.Reset_WelkeCoordsHebIkNetBekeken();
+		
+		teller1 = 1;
+		while(teller1 <= letterBreedte){
+			teller2 = 1;
+			while(teller2 <= letterHoogte){
+				welkeKantOp = 1;
+				while(welkeKantOp <= 8){
+					function.Reset_WelkeCoordsHebIkNetBekeken();
+					teVergelijkenWoord = letterVeld[teller1][teller2].getText();
+					
+					teller1X = teller1;
+					teller1Y = teller2;	
+						while(teVergelijkenWoord.length() < lengteWoordDatJeZoekt){
+							switch(welkeKantOp){
+								case 1: if(l.checkboxmenuitem[1].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.Up(teller1X, teller1Y); 			teller1Y--;}else{teVergelijkenWoord = "Je hoeft niet verticaal te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 2: if(l.checkboxmenuitem[2].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.RightUp(teller1X, teller1Y); 		teller1X++;teller1Y--;}else{teVergelijkenWoord = "Je hoeft niet schuin te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 3: if(l.checkboxmenuitem[0].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.Right(teller1X, teller1Y); 			teller1X++;}else{teVergelijkenWoord = "Je hoeft niet horizontaal te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 4: if(l.checkboxmenuitem[2].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.RightDown(teller1X, teller1Y); 		teller1X++;teller1Y++;}else{teVergelijkenWoord = "Je hoeft niet schuin te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 5: if(l.checkboxmenuitem[1].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.Down(teller1X, teller1Y); 			teller1Y++;}else{teVergelijkenWoord = "Je hoeft niet verticaal te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 6: if(l.checkboxmenuitem[2].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.LeftDown(teller1X, teller1Y); 		teller1X--;teller1Y++;}else{teVergelijkenWoord = "Je hoeft niet schuin te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 7: if(l.checkboxmenuitem[0].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.Left(teller1X, teller1Y); 			teller1X--;}else{teVergelijkenWoord = "Je hoeft niet horizontaal te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								case 8: if(l.checkboxmenuitem[2].getState()){ teVergelijkenWoord = teVergelijkenWoord + get.LeftUp(teller1X, teller1Y); 		teller1X--;teller1Y--;}else{teVergelijkenWoord = "Je hoeft niet schuin te vergelijken, dus dan maak ik er maar een oneindig lange zin van.";}; 
+									break;
+								default: break;
+							}
+						}
+						System.out.println("coords: " + teller2 + "," + teller1 + "   welkekantop: "+welkeKantOp + "    met woord: " + teVergelijkenWoord);
+						zoeker.vergelijkEnKleur(woordDatJeZoekt);
+				welkeKantOp++;
+				}
+			teller2++;
+			}
+		teller1++;
+		}
+	}
+	
+	
+	
+
+	
+	private boolean vergelijkEnKleur(String woordDatJeZoekt) {
+		if(teVergelijkenWoord.equals(woordDatJeZoekt)){
+			letterVeld[teller1][teller2].setBackground(output1Color);
+			teller4 = 1;
+			while(teller4 <= letterBreedte){
+				teller5 = 1;
+				while(teller5 <= letterHoogte){
+					if(welkeCoordsHebIkNetBekeken[teller4][teller5]){
+						letterVeld[teller4][teller5].setBackground(output2Color);
+					}
+
+				teller5++;
+				}
+			teller4++;
+			}
+			return true;
+		}
+		else{
 			return false;
 		}
-else{
-	while(letterVeldYcoord<=letterHoogte){
-		while(letterVeldXcoord<=letterBreedte){
-			welkeKantOp = 1;
-				while(welkeKantOp <= 8){
-					while(lengteGezochtWoord > lengteGezochtWoordTeller1){   //maakt het teVergelijkenWoord
-						if(welkeKantOp == 1 && l.checkboxmenuitem[1].getState()){   
-							teVergelijkenWoord = teVergelijkenWoord + get.Up(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 2 && l.checkboxmenuitem[2].getState()){  
-							teVergelijkenWoord = teVergelijkenWoord + get.RightUp(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 3 && l.checkboxmenuitem[0].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.Right(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 4 && l.checkboxmenuitem[2].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.RightDown(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 5 && l.checkboxmenuitem[1].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.Down(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 6 && l.checkboxmenuitem[2].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.LeftDown(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 7 && l.checkboxmenuitem[0].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.Left(inWelkHokjeIkBenMetGet);
-						}
-						else if(welkeKantOp == 8 && l.checkboxmenuitem[2].getState()){
-							teVergelijkenWoord = teVergelijkenWoord + get.LeftUp(inWelkHokjeIkBenMetGet);
-						}
-						else{}
-						lengteGezochtWoordTeller1++;
-					}
-					
-					if(checker.Controleer(teVergelijkenWoord, gezochtWoord) == true){
-						l.textfield[inWelkHokjeIkBen].setBackground(output1Color);
-						lengteGezochtWoordTeller2 = 2;
-						while(lengteGezochtWoord > (lengteGezochtWoordTeller2-1)){
-							l.textfield[inWelkHokjeIkBenMetGetArray[lengteGezochtWoordTeller2]].setBackground(output2Color);
-							lengteGezochtWoordTeller2++;
-						}
-					return true;
-					}
-					else{}
-					welkeKantOp++;
-				}
-			letterVeldXcoord++;
-		}
-		letterVeldYcoord++;	
-	}
-	return false;
-}
 		
-		
-		
-		
-		
-		
-}
-		
-	
-	
-	void zoekAlleWoorden(){
-		drawer.Outputscherm();
-		teller1 = 1;
-		while(teller1<=11319){
-			if(this.ZoekWoord(InportFile[1][teller1]) && InportFile[1][teller1].length()>2){
-				drawer.OutputschermAdd(InportFile[1][teller1]);
-			}
-			//System.out.println(teller1 + "  nu dit woord vergeleken:  " + InportFile[1][teller1]);
-			teller1++;
-		}
 	}
 }
