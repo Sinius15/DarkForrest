@@ -60,7 +60,7 @@ public class LegendsDarkApi
 	
 	public void Init(){
 		frame = new JFrame[frameMax];
-		panel = new JPanel[frameMax];
+		panel = new JPanel[100];
 		gridBag = new GridBagConstraints[gridbagMax];
 		button = new JButton[buttonMax];
 		textfield = new JTextField[textfieldMax];
@@ -75,7 +75,6 @@ public class LegendsDarkApi
 		menu = new JMenu[menuMax];
 		menuitem = new JMenuItem[menuitemMax];
 		checkboxmenuitem = new JCheckBoxMenuItem[checkboxmenuitemMax];
-		radiobuttonmenuitem = new JRadioButtonMenuItem[radiobuttonmenuitemMax];
 	}
 	
 	public void Say(String txt)
@@ -299,6 +298,45 @@ public class LegendsDarkApi
 		checkboxmenuitemMax = 1;
 		radiobuttonmenuitemMax = 1;
 	}
+	
+	public void SetAllTo(int number){
+		
+		frameTeller = number;
+		labelTeller = number;
+		buttonTeller = number;
+		gridbagTeller = number-1;
+		panelTeller = number;
+		textfieldTeller = number;
+		checkboxTeller = number;
+		radiobuttonTeller = number;
+		buttongroupTeller = number;
+		passwordfieldTeller = number;
+		progressbarTeller = number;
+		textareaTeller = number;
+		menubarTeller = number;
+		menuTeller = number;
+		menuitemTeller = number;
+		checkboxmenuitemTeller = number;
+		radiobuttonmenuitemTeller = number;
+		
+		frameMax = number;
+		labelMax = number;
+		buttonMax = number;
+		gridbagMax = number;
+		textfieldMax = number;
+		checkboxMax = number;
+		radiobuttonMax = number;
+		buttongroupMax = number;
+		passwordfieldMax = number;
+		progressbarMax = number;
+		textareaMax = number;
+		menubarMax = number;
+		menuMax = number;
+		menuitemMax = number;
+		checkboxmenuitemMax = number;
+		radiobuttonmenuitemMax = number;
+	}	
+	
 	
 
 	

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class FileHandler extends WordseekerSolver{
@@ -16,11 +17,10 @@ public class FileHandler extends WordseekerSolver{
 			}
 			else{
 				System.out.println("File already exists!!");
+				function.Message("Sorry", "dit bestand bestaad al.");
 			}
 		} 
-		catch(IOException e1) {
-			e1.printStackTrace();
-		}
+		catch(IOException ex) {System.out.println("File Not Found: "+ ex);}
 	}
 	
 	void WriteConfigFile(File file){																// vult de net aangemaakte config file
@@ -81,19 +81,28 @@ public class FileHandler extends WordseekerSolver{
 		}
 	}
 
-	void Write(File fileOut, String txt){
+	void Write(File fileOut, String txt){															//appends iets aan een bestandje
 		try {
 			scanner = new Scanner(fileOut);
-		
 			try {
 				BufferedWriter out = new BufferedWriter(new FileWriter(fileOut, true));
 				out.append(txt + System.getProperty("line.separator"));
 				out.close();
-	
-			} catch (IOException e) {System.out.println("IO EXCEPTION: "+2);}
-		
-		} catch (FileNotFoundException e1) {System.out.println("File Not Found!");}
+			
+			} catch (IOException ex) {System.out.println("IO EXCEPTION: "+ex);}
+		scanner.close();
+		} catch (FileNotFoundException ex) {System.out.println("File Not Found: "+ ex);}
 	}
 
+	boolean Copy(File from, File to){
+		try {
+			Files.copy( from.toPath(), to.toPath() );
+			return true;
+		} catch (IOException e) {
+			System.out.println(e);
+			return false;
+
+		}
+	}
 }
 

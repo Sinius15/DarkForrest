@@ -38,14 +38,10 @@ public class Config extends WordseekerSolver{
 			textfieldColor = Color.white;
 			output1Color = Color.red;
 			output2Color = Color.orange;
+			laadWoordenboek = false;
 			return false;
 		}
 	}
 	
-	void Make(){
-		file.CreateFile(configPath);
-		file.Open("rec/Config.ini", 3, false);
-		file.WriteConfigFile(configPath);
-		
-	}
+
 }

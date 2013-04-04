@@ -45,7 +45,7 @@ public class MiscFunction extends WordseekerSolver{
 		}
 	}
 
-	void Message(String titel, String text){
+	public void Message(String titel, String text){
 		JOptionPane.showMessageDialog(null, text, titel, JOptionPane.PLAIN_MESSAGE);
 	}
 

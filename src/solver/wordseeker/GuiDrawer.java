@@ -53,6 +53,7 @@ public class GuiDrawer extends WordseekerSolver {
 		l.textfield[1].addKeyListener(keyHandler1);
 		l.textfield[2].addKeyListener(keyHandler1);
 		
+		l.button[0].addActionListener(action.Start());
 
 	}
 	
@@ -79,7 +80,6 @@ public class GuiDrawer extends WordseekerSolver {
 		while(teller1 <= letterHoogte){
 			teller2 = 1;
 			while(teller2 <= letterBreedte){
-				
 				letterVeld[teller1][teller2] = new JTextField("");
 				letterVeld[teller1][teller2].setVisible(true);
 				letterVeld[teller1][teller2].setPreferredSize(new Dimension(50, 50));
@@ -159,8 +159,6 @@ public class GuiDrawer extends WordseekerSolver {
 		}
 		l.panel[2].setBackground(backgroundColor);
 		
-		
-		
 	}
 	
 	String DrawGUI5(){		//maakt het fileChooser schermpje,  voor het openen
@@ -222,13 +220,11 @@ public class GuiDrawer extends WordseekerSolver {
 	  final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
 	  final File currentJar = new File(WordseekerSolver.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 
-	  /* is it a jar file? */
 	  if(!currentJar.getName().endsWith(".jar")){
 		  System.out.println("I am not a .jar    sorry!");
 		  return;
 	  }
 
-	  /* Build command: java -jar application.jar */
 	  final ArrayList<String> command = new ArrayList<String>();
 	  command.add(javaBin);
 	  command.add("-jar");
@@ -238,8 +234,8 @@ public class GuiDrawer extends WordseekerSolver {
 	  try {
 		builder.start();
 	  } 
-	  catch (IOException error) {
-		System.out.println(error);
+	  catch (IOException ex) {
+		System.out.println(ex);
 	  }
 	  	System.exit(0);
 	}

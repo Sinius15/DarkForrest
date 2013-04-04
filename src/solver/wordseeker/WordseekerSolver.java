@@ -60,7 +60,7 @@ public class WordseekerSolver {
 	public static SavingSystem savingSystem = new SavingSystem();
 	
 	public static JFileChooser filechooser;								//deze alinea is voor het filechooser gebeuren.
-	public static javax.swing.filechooser.FileFilter filefilter ;
+	public static javax.swing.filechooser.FileFilter filefilter;
 	public static String fileOutString;
 	public static File fileOut;
 	
@@ -107,7 +107,7 @@ public class WordseekerSolver {
 		l.Init();
 		
 		if(config.Init() == false){
-			config.Make();
+			file.Copy(new File("rec/Config.ini"), configPath);
 			config.Init();
 		}
 		
@@ -117,9 +117,8 @@ public class WordseekerSolver {
 		
 		drawer.DrawGUI1();
 		drawer.DrawGUI2();
-		file.Open("res/woordenboek.txt", 1, true);
 
-		l.button[0].addActionListener(action.Start());
+
 
 	}
 }

@@ -40,10 +40,7 @@ public class SavingSystem extends WordseekerSolver{
 	
 	public ActionListener SaveWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
 		path = drawer.DrawGUI6();
-		System.out.println(path);
-		System.out.println("DrawGUI6 is done now");
 		if(path == null){
-			System.out.println("het is null");
 		}
 		else{
 			      File fileOut = new File(path + "/" + fileOutString + ".woordzoeker" );
@@ -52,7 +49,7 @@ public class SavingSystem extends WordseekerSolver{
 			      file.Write(fileOut, String.valueOf(letterBreedte));
 			      file.Write(fileOut, String.valueOf(letterHoogte));
 			      
-
+			      teller1 = 1;
 			      while(teller1 <= letterHoogte){
 			    	  teller2 = 1;
 			    	  while(teller2 <= letterBreedte){
@@ -62,8 +59,6 @@ public class SavingSystem extends WordseekerSolver{
 			    	  }
 			      teller1++;
 			      }
-			      //TODO
-			       
 		}
 	}};}
 	
