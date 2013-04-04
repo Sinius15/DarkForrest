@@ -5,27 +5,28 @@ import javax.swing.*;
 
 public class LegendsDarkApi
 {
-	public JFrame[] frame = new JFrame[100];
-	public JPanel[] panel = new JPanel[100];
-	public GridBagConstraints[] gridBag = new GridBagConstraints[100];
-	public JButton[] button = new JButton[100];
-	public JTextField[] textfield = new JTextField[100];
-	public JCheckBox[] checkbox = new JCheckBox[100];
-	public JRadioButton[] radiobutton = new JRadioButton[100];
-	public ButtonGroup[] buttongroup = new ButtonGroup[100];
-	public JPasswordField[] passwordfield = new JPasswordField[100];
-	public JProgressBar[] progressbar = new JProgressBar[100];
-	public JTextArea[] textarea = new JTextArea[100];
-	public JLabel[] label = new JLabel[100];
-	public JMenuBar[] menubar = new JMenuBar[100];
-	public JMenu[] menu = new JMenu[100];
-	public JMenuItem[] menuitem = new JMenuItem[100];
-	public JCheckBoxMenuItem[] checkboxmenuitem = new JCheckBoxMenuItem[100];
-	public JRadioButtonMenuItem[] radiobuttonmenuitem = new JRadioButtonMenuItem[100];
+	public JFrame[] frame;
+	public JPanel[] panel;
+	public GridBagConstraints[] gridBag;
+	public JButton[] button;
+	public JTextField[] textfield;
+	public JCheckBox[] checkbox;
+	public JRadioButton[] radiobutton;
+	public ButtonGroup[] buttongroup;
+	public JPasswordField[] passwordfield;
+	public JProgressBar[] progressbar;
+	public JTextArea[] textarea;
+	public JLabel[] label;
+	public JMenuBar[] menubar;
+	public JMenu[] menu;
+	public JMenuItem[] menuitem;
+	public JCheckBoxMenuItem[] checkboxmenuitem;
+	public JRadioButtonMenuItem[] radiobuttonmenuitem;
+	
 	public int frameTeller = 0;
 	public int labelTeller = 0;
 	public int buttonTeller = 0;
-	public int gridbagTeller = 1;
+	public int gridbagTeller = -1;
 	public int panelTeller = 0;
 	public int textfieldTeller = 0;
 	public int checkboxTeller = 0;
@@ -40,26 +41,26 @@ public class LegendsDarkApi
 	public int checkboxmenuitemTeller = 0;
 	public int radiobuttonmenuitemTeller = 0;
 	
-	public int frameMax = 100;
-	public int labelMax = 100;
-	public int buttonMax = 100;
-	public int gridbagMax = 100;
-	public int textfieldMax = 100;
-	public int checkboxMax = 100;
-	public int radiobuttonMax = 100;
-	public int buttongroupMax = 100;
-	public int passwordfieldMax = 100;
-	public int progressbarMax = 100;
-	public int textareaMax = 100;
-	public int menubarMax = 100;
-	public int menuMax = 100;
-	public int menuitemMax = 100;
-	public int checkboxmenuitemMax = 100;
-	public int radiobuttonmenuitemMax = 100;
+	public int frameMax = 1;
+	public int labelMax = 1;
+	public int buttonMax = 1;
+	public int gridbagMax = 1;
+	public int textfieldMax = 1;
+	public int checkboxMax = 1;
+	public int radiobuttonMax = 1;
+	public int buttongroupMax = 1;
+	public int passwordfieldMax = 1;
+	public int progressbarMax = 1;
+	public int textareaMax = 1;
+	public int menubarMax = 1;
+	public int menuMax = 1;
+	public int menuitemMax = 1;
+	public int checkboxmenuitemMax = 1;
+	public int radiobuttonmenuitemMax = 1;
 	
 	public void Init(){
 		frame = new JFrame[frameMax];
-		panel = new JPanel[100];
+		panel = new JPanel[frameMax];
 		gridBag = new GridBagConstraints[gridbagMax];
 		button = new JButton[buttonMax];
 		textfield = new JTextField[textfieldMax];
@@ -74,6 +75,7 @@ public class LegendsDarkApi
 		menu = new JMenu[menuMax];
 		menuitem = new JMenuItem[menuitemMax];
 		checkboxmenuitem = new JCheckBoxMenuItem[checkboxmenuitemMax];
+		radiobuttonmenuitem = new JRadioButtonMenuItem[radiobuttonmenuitemMax];
 	}
 	
 	public void Say(String txt)
@@ -114,17 +116,7 @@ public class LegendsDarkApi
   		this.gridBag[this.gridbagTeller].gridwidth = width;
   		this.gridBag[this.gridbagTeller].anchor = GridBagConstraints.NORTHWEST;
   		this.frame[frameNumber].revalidate();
-	} 
-  	
-  	public void GridbagNew(int Xcoord, int Ycoord, int width, int height)
-	{
-  		this.gridBag[this.gridbagTeller] = new GridBagConstraints();
-  		this.gridBag[this.gridbagTeller].insets = new Insets(1, 1, 1, 1);
-  		this.gridBag[this.gridbagTeller].gridx = Xcoord;
-  		this.gridBag[this.gridbagTeller].gridy = Ycoord;
-  		this.gridBag[this.gridbagTeller].gridheight = height;
-  		this.gridBag[this.gridbagTeller].gridwidth = width;
-  		this.gridBag[this.gridbagTeller].anchor = GridBagConstraints.NORTHWEST;
+		
 	} 
   	
 	public void Button(int hoogte, int breedte,int gridhoogte, int gridbreedte, int Xcoord, int Ycoord, String naam, int frameNumber)
@@ -269,5 +261,46 @@ public class LegendsDarkApi
 		this.menu[menuNr].add(this.radiobuttonmenuitem[this.radiobuttonmenuitemTeller]);
 		this.radiobuttonmenuitemTeller++;
 	}
+	
+	public void ResetAll(){
+		
+		frameTeller = 0;
+		labelTeller = 0;
+		buttonTeller = 0;
+		gridbagTeller = -1;
+		panelTeller = 0;
+		textfieldTeller = 0;
+		checkboxTeller = 0;
+		radiobuttonTeller = 0;
+		buttongroupTeller = 0;
+		passwordfieldTeller = 0;
+		progressbarTeller = 0;
+		textareaTeller = 0;
+		menubarTeller = 0;
+		menuTeller = 0;
+		menuitemTeller = 0;
+		checkboxmenuitemTeller = 0;
+		radiobuttonmenuitemTeller = 0;
+		
+		frameMax = 1;
+		labelMax = 1;
+		buttonMax = 1;
+		gridbagMax = 1;
+		textfieldMax = 1;
+		checkboxMax = 1;
+		radiobuttonMax = 1;
+		buttongroupMax = 1;
+		passwordfieldMax = 1;
+		progressbarMax = 1;
+		textareaMax = 1;
+		menubarMax = 1;
+		menuMax = 1;
+		menuitemMax = 1;
+		checkboxmenuitemMax = 1;
+		radiobuttonmenuitemMax = 1;
+	}
+	
+
+	
 }
 

@@ -10,7 +10,7 @@ public class Config extends WordseekerSolver{
 	boolean Init(){
 		try{
 		System.out.println(System.getProperty("user.dir") + "\\Config.ini");
-		file.openSafe(System.getProperty("user.dir") + "\\Config.ini", 0);
+		file.Open(System.getProperty("user.dir") + "\\Config.ini", 0, true);
 	
 		backgroundColor = new Color(Integer.parseInt(InportFile[0][1]),Integer.parseInt(InportFile[0][2]),Integer.parseInt(InportFile[0][3]));
 		buttonColor = new Color(Integer.parseInt(InportFile[0][4]),Integer.parseInt(InportFile[0][5]),Integer.parseInt(InportFile[0][6]));
@@ -44,7 +44,7 @@ public class Config extends WordseekerSolver{
 	
 	void Make(){
 		file.CreateFile(configPath);
-		file.OpenConfig("rec/Config.ini", 3);
+		file.Open("rec/Config.ini", 3, false);
 		file.WriteConfigFile(configPath);
 		
 	}

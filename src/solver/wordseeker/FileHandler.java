@@ -2,46 +2,13 @@ package solver.wordseeker;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class FileHandler extends WordseekerSolver{
 
-	void openSafe(String path, int naam){															//open een file, regels met ## worden genegeerd
-		try{   
-			scanner = new Scanner(new File(path));  
-			teller1 = 1;
-			while(scanner.hasNext()){
-				InportFile[naam][teller1] = scanner.next();
-				if(InportFile[naam][teller1].substring(0, 2) != null && !InportFile[naam][teller1].substring(0, 2).equals("##")){
-				System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
-				teller1++;
-				}
-				else{
-					scanner.nextLine();
-					System.out.println("een lijn overgeslagen");
-				}
-			}
-		scanner.close();
-		}
-		catch(Exception e){  System.out.println("could not find the file");   }
-	}
-				
-	void open(String path, int naam){																//open een file, zonder controle voor ##
-		try{   
-			scanner = new Scanner(new File(path));  
-			teller1 = 1;
-			while(scanner.hasNext()){
-				InportFile[naam][teller1] = scanner.next();
-				System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
-				teller1++;
-			}
-			scanner.close();
-		}
-		catch(Exception e){  System.out.println("could not find the file");   }
-	}
-	
 	void CreateFile(File file){																		//maakt een leeg bestandje
 		try{
 			if(file.createNewFile()){
@@ -56,43 +23,6 @@ public class FileHandler extends WordseekerSolver{
 		}
 	}
 	
-	void WriteSafeFile(File file){																	//om een woordzoeker op te slaan
-		try{   scanner = new Scanner(file);  }
-		catch(Exception e){  System.out.println("could not find the file");   }
-		
-		 try {
-		        BufferedWriter out = new BufferedWriter(new FileWriter(file));
-		        out.write(letterBreedte + System.getProperty( "line.separator" ));
-		        out.write(letterHoogte + System.getProperty( "line.separator" ));
-		        teller1= 1;
-		        while(teller1<=letterAantal){
-		        	out.write(l.textfield[teller1].getText() + System.getProperty( "line.separator" ));
-		        	teller1++;
-		        }
-		        out.close();
-		 } 
-		 catch (IOException e) {
-		 }
-		
-		scanner.close();
-		
-	}
-
-	void OpenConfig(String path, int naam){															//opent de config file vanuit de rec map
-		try{  
-			scanner = new Scanner(new File(path));  
-			teller1 = 1;
-			while(scanner.hasNextLine()){
-				InportFile[naam][teller1] = scanner.nextLine();
-				System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
-				teller1++;
-				}
-			scanner.close();
-			}
-		catch(Exception e){  System.out.println("could not find the Config file");   }
-		
-	}
-			
 	void WriteConfigFile(File file){																// vult de net aangemaakte config file
 		try{   scanner = new Scanner(file);  }
 		catch(Exception e){  System.out.println("could not find the file while in the WriteToFile Fucntion");   }
@@ -115,4 +45,55 @@ public class FileHandler extends WordseekerSolver{
 		
 		scanner.close();
 	}
+
+	void Open(String path, int naam, boolean negeerbeer){
+		if(negeerbeer){
+			try{   
+				scanner = new Scanner(new File(path));  
+				teller1 = 1;
+				while(scanner.hasNext()){
+					InportFile[naam][teller1] = scanner.next();
+					if(InportFile[naam][teller1].substring(0, 2) != null && !InportFile[naam][teller1].substring(0, 2).equals("##")){
+					System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
+					teller1++;
+					}
+					else{
+						scanner.nextLine();
+						System.out.println("een lijn overgeslagen");
+					}
+				}
+			scanner.close();
+			}
+			catch(Exception e){  System.out.println("could not find the file");   }
+		}
+		else if(!negeerbeer){
+			try{   
+				scanner = new Scanner(new File(path));  
+				teller1 = 1;
+				while(scanner.hasNext()){
+					InportFile[naam][teller1] = scanner.next();
+					System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
+					teller1++;
+				}
+				scanner.close();
+			}
+			catch(Exception e){  System.out.println("could not find the file");   }
+		}
+	}
+
+	void Write(File fileOut, String txt){
+		try {
+			scanner = new Scanner(fileOut);
+		
+			try {
+				BufferedWriter out = new BufferedWriter(new FileWriter(fileOut, true));
+				out.append(txt + System.getProperty("line.separator"));
+				out.close();
+	
+			} catch (IOException e) {System.out.println("IO EXCEPTION: "+2);}
+		
+		} catch (FileNotFoundException e1) {System.out.println("File Not Found!");}
+	}
+
 }
+

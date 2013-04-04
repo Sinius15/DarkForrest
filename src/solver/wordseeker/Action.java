@@ -2,6 +2,7 @@ package solver.wordseeker;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URISyntaxException;
 
 public class Action extends WordseekerSolver{
 	/*
@@ -34,5 +35,14 @@ public class Action extends WordseekerSolver{
 			l.frame[0].dispose();
 			drawer.DrawGUI3(letterHoogte, letterBreedte);
 		}
+	}};}
+	
+	public ActionListener GoBack() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
+		try {
+			drawer.Restart();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+
 	}};}
 }

@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -212,5 +215,32 @@ public class GuiDrawer extends WordseekerSolver {
 	
 	void OutputschermAdd(String txt){
 		l.textarea[10].setText(l.textarea[10].getText() + " \n " + txt);
+	}
+	
+	void Restart() throws URISyntaxException		//deze functie is de enigge funcie die ik niet zelf heb geschreven, deze is ook onbegrijpelijk XD
+	{
+	  final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+	  final File currentJar = new File(WordseekerSolver.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+
+	  /* is it a jar file? */
+	  if(!currentJar.getName().endsWith(".jar")){
+		  System.out.println("I am not a .jar    sorry!");
+		  return;
+	  }
+
+	  /* Build command: java -jar application.jar */
+	  final ArrayList<String> command = new ArrayList<String>();
+	  command.add(javaBin);
+	  command.add("-jar");
+	  command.add(currentJar.getPath());
+
+	  final ProcessBuilder builder = new ProcessBuilder(command);
+	  try {
+		builder.start();
+	  } 
+	  catch (IOException error) {
+		System.out.println(error);
+	  }
+	  	System.exit(0);
 	}
 }
