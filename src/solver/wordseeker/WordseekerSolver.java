@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
 import solver.wordseeker.KeyHandler.*;
+import solver.wordseeker.Threading.Thread_Main;
 import api.LegendsDarkApi;
 
 public class WordseekerSolver {
@@ -58,6 +59,7 @@ public class WordseekerSolver {
 	public static KeyHandler_ScreenOne keyHandler1 = new KeyHandler_ScreenOne();
 	public static KeyHandler_ScreenTwo keyHandler2 = new KeyHandler_ScreenTwo();
 	public static SavingSystem savingSystem = new SavingSystem();
+	public static Thread_Main threadMain = new Thread_Main();
 	
 	public static JFileChooser filechooser;								//deze alinea is voor het filechooser gebeuren.
 	public static javax.swing.filechooser.FileFilter filefilter;
@@ -84,8 +86,12 @@ public class WordseekerSolver {
 	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
 	public static JScrollPane scrollPane;
 
+	public static Thread mainThread;
+	
+	
 	
 	public static void main(String[] args) {
+		
 		l.frameMax = 10;
 		l.labelMax = 10;
 		l.buttonMax = 10;

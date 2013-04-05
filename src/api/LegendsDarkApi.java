@@ -75,6 +75,7 @@ public class LegendsDarkApi
 		menu = new JMenu[menuMax];
 		menuitem = new JMenuItem[menuitemMax];
 		checkboxmenuitem = new JCheckBoxMenuItem[checkboxmenuitemMax];
+		radiobuttonmenuitem = new JRadioButtonMenuItem[radiobuttonmenuitemMax];
 	}
 	
 	public void Say(String txt)
