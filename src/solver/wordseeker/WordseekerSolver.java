@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
 import solver.wordseeker.KeyHandler.*;
-import solver.wordseeker.Threading.Thread_Main;
+import solver.wordseeker.Threading.*;
 import api.LegendsDarkApi;
 
 public class WordseekerSolver {
@@ -24,10 +24,10 @@ public class WordseekerSolver {
 	public static int teller4;		
 	public static int teller5;		
 	public static int teller6;		
-	public static int teller7;			
+	public static int teller7;
+	public static int teller8;
 	public static int teller1X;
 	public static int teller1Y;	
-	
 	public static int lengteGezochtWoord;								//lengte van het woord wat gezocht moet worden
 	public static int welkeKantOp;										//welke kan hij aan het zoeken is.  kan 1-9 zijn,   1 is omhoog, 2 rechtsboven, 3rechts enzovoort
 	public static int returnErrorNR;									//geeft aan of het ophalen van de file gelukt is  0=ja  1=nee	dit kan geen boolean worden
@@ -59,7 +59,9 @@ public class WordseekerSolver {
 	public static KeyHandler_ScreenOne keyHandler1 = new KeyHandler_ScreenOne();
 	public static KeyHandler_ScreenTwo keyHandler2 = new KeyHandler_ScreenTwo();
 	public static SavingSystem savingSystem = new SavingSystem();
-	public static Thread_Main threadMain = new Thread_Main();
+	public static Thread_0 thread0 = new Thread_0();							//de main thread die alles doet behalve als het door iets anders wordt gedaan XD
+	public static Thread_1 thread1 = new Thread_1();							//zorgt voor het laden van het woordenboek. opstarten hoeft niet te wachten op woordenboek dus sneller :D
+	public static Thread_Zoeker threadZoeker = new Thread_Zoeker();					//zorgt voor het zoek gebeuren, moet 8 keer aangeroepen worden.
 	
 	public static JFileChooser filechooser;								//deze alinea is voor het filechooser gebeuren.
 	public static javax.swing.filechooser.FileFilter filefilter;
@@ -85,13 +87,13 @@ public class WordseekerSolver {
 	/*hieronder alles voor GUI layout*/
 	public static JTextField[][] letterVeld = new JTextField[22][22];		//horizontaal en verticaal
 	public static JScrollPane scrollPane;
-
-	public static Thread mainThread;
 	
+	public static void main(String[] args){
+		thread0.Start();
+		thread1.Start();
+	}
 	
-	
-	public static void main(String[] args) {
-		
+	public static void mainProgram() {
 		l.frameMax = 10;
 		l.labelMax = 10;
 		l.buttonMax = 10;
@@ -117,14 +119,8 @@ public class WordseekerSolver {
 			config.Init();
 		}
 		
-		if(laadWoordenboek){
-			file.Open("rec/woordenboek.txt", 1, true);
-		}
-		
 		drawer.DrawGUI1();
 		drawer.DrawGUI2();
-
-
-
 	}
+
 }

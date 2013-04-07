@@ -46,7 +46,7 @@ public class FileHandler extends WordseekerSolver{
 		scanner.close();
 	}
 
-	void Open(String path, int naam, boolean negeerbeer){
+	public void Open(String path, int naam, boolean negeerbeer){
 		if(negeerbeer){
 			try{   
 				scanner = new Scanner(new File(path));  
