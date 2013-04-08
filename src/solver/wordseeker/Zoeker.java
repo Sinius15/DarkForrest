@@ -56,6 +56,7 @@ public class Zoeker extends WordseekerSolver{
 		teller8 = 1;
 		while(teller8 <= 8){
 			threadZoeker.Start(woordDatJeZoekt, teller8);
+			teller8++;
 		}
 	}
 	

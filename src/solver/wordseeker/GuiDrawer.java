@@ -121,7 +121,7 @@ public class GuiDrawer extends WordseekerSolver {
 					}
 					else{
 						function.ClearColor();
-						zoeker.Zoek(l.textfield[(1)].getText());
+						zoeker.Zoek(l.textfield[1].getText());
 					}
 					
 				}else{}
