@@ -29,7 +29,7 @@ public class Thread_1 extends WordseekerSolver implements Runnable{
 	
 	private void laadWoordenBook(){
 		if(laadWoordenboek){
-			file.Open("src/woordenboek.txt", 1, true);
+			file.Open("res/woordenboek.txt", 1, true);
 		}
 	}
 

@@ -7,10 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
@@ -121,7 +119,7 @@ public class GuiDrawer extends WordseekerSolver {
 					}
 					else{
 						function.ClearColor();
-						zoeker.Zoek(l.textfield[1].getText());
+						zoeker.ZoekWoord(l.textfield[1].getText());
 					}
 					
 				}else{}
@@ -135,7 +133,7 @@ public class GuiDrawer extends WordseekerSolver {
         letterVeld[1][1].requestFocus();
 	}
 
-	void DrawGUI4(){		//maakt het About schermpje
+	void About(){		//maakt het About schermpje
 		System.out.println("=====================");
 		l.frameTeller = 2;
 		l.panelTeller = 2;
@@ -145,7 +143,7 @@ public class GuiDrawer extends WordseekerSolver {
 		l.Label(5, 180, 1, 1, 1, 0, "", 2);
 		l.Label(10, 180, 1, 1, 1, 1, "WordSeeker Solver", 2);
 		l.Label(5, 180, 1, 1, 1, 2, "", 2);
-		l.Label(10, 180, 1, 1, 1, 3, "Versie 1.0", 2);
+		l.Label(10, 180, 1, 1, 1, 3, "Versie 2.0", 2);
 		l.Label(5, 180, 1, 1, 1, 4, "", 2);
 		l.Label(20, 180, 1, 1, 1, 5, "Made By MrNapolion", 2);
 
@@ -154,14 +152,12 @@ public class GuiDrawer extends WordseekerSolver {
 		teller1= 3;
 		while(teller1 < 9){
 			l.label[teller1].setForeground(textColor);
-			System.out.println("Color set");
 			teller1++;
 		}
 		l.panel[2].setBackground(backgroundColor);
-		
 	}
 	
-	String DrawGUI5(){		//maakt het fileChooser schermpje,  voor het openen
+	String GetOpenPath(){		//maakt het fileChooser schermpje,  voor het openen
 		filechooser = new JFileChooser();
 		filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		filechooser.setFileFilter(filefilter);
@@ -173,25 +169,20 @@ public class GuiDrawer extends WordseekerSolver {
 		else{return "";}
 	}
 	
-	String DrawGUI6(){		//maakt het fileChooser schermpje,  voor het Opslaan
-		if(!checker.CheckIfValidAlleHokjes()){return null;}
-		else{
-			fileOutString = JOptionPane.showInputDialog(null, "Naam van de woordzoeker:", "Bestandsnaam", JOptionPane.PLAIN_MESSAGE);
-			if(fileOutString != null){fileOut = new File(fileOutString);}else{}
-			if(fileOutString == null){return null;}
-			else if(fileOutString.isEmpty() || !fileOutString.matches(patternLetter)){function.Message("Stop", "je moet 1 woord invullen!"); return null;}
-			else{
-				filechooser = new JFileChooser();
-				filechooser.setFileSelectionMode(JFileChooser.SAVE_DIALOG);
-				filechooser.setFileFilter(filefilter);
-				filechooser.setApproveButtonToolTipText("Save");
-				returnErrorNR = filechooser.showOpenDialog(null);
-				if(returnErrorNR == 0){
-					return filechooser.getSelectedFile().getAbsolutePath();
-				}
-				else{return null;}
-			}	
+	String GetSafePath(){
+		if(!checker.CheckIfValidAlleHokjes()){
+			return null;
 		}
+		
+		filechooser = new JFileChooser();
+		filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		filechooser.setFileFilter(filefilter);
+		filechooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		returnErrorNR = filechooser.showSaveDialog(null);
+		if(returnErrorNR == 0){
+			return fileOutString = filechooser.getSelectedFile().getAbsolutePath();
+		}
+		return null;
 	}
 	
 	void Outputscherm(){

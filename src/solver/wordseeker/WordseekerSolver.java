@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import solver.wordseeker.KeyHandler.*;
 import solver.wordseeker.Threading.*;
 import api.LegendsDarkApi;
@@ -64,7 +66,7 @@ public class WordseekerSolver {
 	public static Thread_Zoeker threadZoeker = new Thread_Zoeker();					//zorgt voor het zoek gebeuren, moet 8 keer aangeroepen worden.
 	
 	public static JFileChooser filechooser;											//deze alinea is voor het filechooser gebeuren.
-	public static javax.swing.filechooser.FileFilter filefilter;
+	public static FileNameExtensionFilter filefilter = new FileNameExtensionFilter("wordseeker files", "woordzoeker") ;
 	public static String fileOutString;
 	public static File fileOut;
 	
@@ -115,7 +117,7 @@ public class WordseekerSolver {
 		l.Init();
 		
 		if(config.Init() == false){
-			file.Copy(new File("src/Config.ini"), configPath);
+			file.Copy(new File("res/Config.ini"), configPath);
 			config.Init();
 		}
 		

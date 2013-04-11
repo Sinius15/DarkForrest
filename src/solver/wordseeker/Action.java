@@ -15,7 +15,7 @@ public class Action extends WordseekerSolver{
 	}};}
 
 	public ActionListener About() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maak het "About" schermpje
-		drawer.DrawGUI4();
+		drawer.About();
 	}};}
 	
 	public ActionListener VulAlleVelden() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //vult alle velden

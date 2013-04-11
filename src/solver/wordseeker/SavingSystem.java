@@ -6,8 +6,8 @@ import java.io.File;
 
 public class SavingSystem extends WordseekerSolver{
 	
-	public ActionListener OpenWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
-		path = drawer.DrawGUI5();
+	public ActionListener OpenWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //Om een woordzoeker te openen
+		path = drawer.GetOpenPath();
 		
 		if(path != ""){
 			file.Open(path, 2, false);
@@ -38,12 +38,12 @@ public class SavingSystem extends WordseekerSolver{
 
 	}};}
 	
-	public ActionListener SaveWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
-		path = drawer.DrawGUI6();
-		if(path == null){
-		}
+	public ActionListener SaveWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //om een woordzoeker op te slaan
+		path = drawer.GetSafePath();
+		if(path == null){}
 		else{
-			      File fileOut = new File(path + "/" + fileOutString + ".woordzoeker" );
+			      File fileOut = new File(path + ".woordzoeker" );
+			      System.out.println(fileOut);
 			      file.CreateFile(fileOut);
 			      
 			      file.Write(fileOut, String.valueOf(letterBreedte));
@@ -54,7 +54,6 @@ public class SavingSystem extends WordseekerSolver{
 			    	  teller2 = 1;
 			    	  while(teller2 <= letterBreedte){
 			    		  file.Write(fileOut, letterVeld[teller1][teller2].getText());
-			    		  System.out.println("I JUST WROTE : " + letterVeld[teller1][teller2].getText());
 			    		  teller2++;
 			    	  }
 			      teller1++;
