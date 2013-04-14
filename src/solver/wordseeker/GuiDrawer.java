@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import api.LegendsDarkApi_New.*;
 
 public class GuiDrawer extends WordseekerSolver {
 	/*
@@ -18,41 +19,51 @@ public class GuiDrawer extends WordseekerSolver {
 	 * menu bars staan in de class MenuBar
 	 */
 	void DrawGUI1(){		//maakt het eerste startup schermpje
-		l.Frame(150,200,"Grootte?");
-		l.Label(20, 200, 1, 1, 0, 1, "De breedte van mijn woordzoeker:", 0);
-		l.Textfield(20, 30, 1, 1, 1, 1, "", 0);
-		l.Label(20,200, 1, 1, 0, 2, "De hoogte van mijn woordzoeker:", 0);
-		l.Textfield(20, 30, 1, 1, 1, 2, "", 0);
-		l.Button(20, 232, 1, 2, 0, 3, "Maak!", 0);
 		
-		l.panel[0].setBackground(backgroundColor);
-		l.button[0].setBackground(buttonColor);
-		l.button[0].setForeground(textColor);
-		l.button[0].setBorder(emptyBorder);
-		l.textfield[1].setForeground(textColor);
-		l.textfield[2].setForeground(textColor);
+		label1.setSize(200, 20);
+		label1.setPlace(0, 0);
+		label1.setText("De breede van mijn woordzoeker: ");
+		label1.setForground(textColor);
+		inputWidth.setPlace(1, 0);
+		inputWidth.setSize(25, 20);
+		inputWidth.setBackground(textfieldColor);
+		inputWidth.setForground(textColor);
+		inputWidth.get().setBorder(emptyBorder);
+		label2.setSize(200, 20);
+		label2.setPlace(0, 1);
+		label2.setText("De hoogte van mijn woordzoeker: ");
+		label2.setForground(textColor);
+		inputHeight.setPlace(1, 1);
+		inputHeight.setSize(25, 20);
+		inputHeight.setBackground(textfieldColor);
+		inputHeight.setForground(textColor);
+		inputHeight.get().setBorder(emptyBorder);
+		startupButton.setBackground(buttonColor);
+		startupButton.setForground(textColor);
+		startupButton.setText("Maak!");
+		startupButton.get().setBorder(emptyBorder);
+		startupButton.setSize(227, 20);
+		startupButton.setPlace(0,2);
+		startupButton.setGridSize(2, 1);
+		startupButton.get().addActionListener(action.Start());
 		
-		l.textfield[1].setBackground(textfieldColor);
-		l.textfield[2].setBackground(textfieldColor);
 		
-		l.textfield[1].setBorder(emptyBorder);
-		l.textfield[2].setBorder(emptyBorder);
 		
-		l.label[0].setForeground(textColor);
-		l.label[1].setForeground(textColor);
+		startupScreen = new LFrame();
+		startupScreen.setVisable(false);
+		startupScreen.setBackground(backgroundColor);
+		startupScreen.add(label1);
+		startupScreen.add(inputWidth);
+		startupScreen.add(label2);
+		startupScreen.add(inputHeight);
+		startupScreen.add(startupButton);
 		
-		bar.StartupScherm();
-		l.frame[0].setResizable(false);
-		l.frame[0].pack();
 		
-		l.textfield[1].requestFocus();
-		
-		l.panel[0].addKeyListener(keyHandler1);
-		l.textfield[1].addKeyListener(keyHandler1);
-		l.textfield[2].addKeyListener(keyHandler1);
-		
-		l.button[0].addActionListener(action.Start());
-
+		startupScreen.setTitel("Wordseeker Solver");
+		startupScreen.get().setResizable(false);
+		startupScreen.revalidate();
+		startupScreen.get().pack();
+		startupScreen.setVisable(true);
 	}
 	
 	void DrawGUI2(){		//maakt een klein onzichtbaar scherm tijdens opstarten voor het later maken van GUI3
@@ -67,6 +78,7 @@ public class GuiDrawer extends WordseekerSolver {
 		l.textfieldTeller = 1;
 		l.labelTeller = 1;
 		l.frameTeller = 1;
+		l.buttonTeller = 1;
 		frameHoogte = letterHoogte * 50 + (letterHoogte *10) + 600;
 		frameBreedte = letterBreedte * 50 + (letterBreedte *10) + 400;
 		letterAantal = letterHoogte * letterBreedte;
@@ -90,7 +102,7 @@ public class GuiDrawer extends WordseekerSolver {
 				letterVeld[teller1][teller2].addKeyListener(keyHandler2);
 				teller3++;
 				teller2++;
-				l.frame[0].revalidate();
+				l.frame[1].revalidate();
 			}
 			teller1++;
 		}

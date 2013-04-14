@@ -30,9 +30,9 @@ public class Action extends WordseekerSolver{
 	
 	public ActionListener Start() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
 		if(checker.CheckIfValidStartScreen() == true){
-			letterBreedte = Integer.parseInt(l.textfield[1].getText());
-			letterHoogte = Integer.parseInt(l.textfield[2].getText());
-			l.frame[0].dispose();
+			letterBreedte = Integer.parseInt(inputWidth.getText());
+			letterHoogte = Integer.parseInt(inputHeight.getText());
+			startupScreen.get().dispose();
 			drawer.DrawGUI3(letterHoogte, letterBreedte);
 		}
 	}};}

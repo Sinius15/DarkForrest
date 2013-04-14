@@ -7,10 +7,10 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import solver.wordseeker.KeyHandler.*;
 import solver.wordseeker.Threading.*;
 import api.LegendsDarkApi;
+import api.LegendsDarkApi_New.*;
 
 public class WordseekerSolver {
 
@@ -89,6 +89,15 @@ public class WordseekerSolver {
 	/*hieronder alles voor GUI layout*/
 	public static JTextField[][] letterVeld = new JTextField[22][22];				//horizontaal en verticaal
 	public static JScrollPane scrollPane;
+	
+	public static LFrame startupScreen;							  ///////////////
+	public static LButton startupButton = new LButton();			//
+	public static LTextField inputHeight = new LTextField();		//	dit is allemaal voor 
+	public static LTextField inputWidth = new LTextField();			//	het eerste schermpje
+	public static LLabel label1 = new LLabel();						//
+	public static LLabel label2 = new LLabel();					  ////////////////
+	
+	
 	
 	public static void main(String[] args){
 		thread0.Start();

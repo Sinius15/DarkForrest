@@ -36,15 +36,15 @@ public class Checker extends WordseekerSolver{
 	}
 
 	boolean CheckIfValidStartScreen(){
-		if(l.textfield[1].getText().length() == 0 || l.textfield[2].getText().length() == 0){
+		if(inputHeight.getText().length() == 0 || inputWidth.getText().length() == 0){
 			function.Message("Stop", "je moet 2 cijfers invullen van 3 tot en met 22.");
 			return false;
 		}
-		else if(!l.textfield[1].getText().matches(patternNumber) || !l.textfield[2].getText().matches(patternNumber)){
+		else if(!inputHeight.getText().matches(patternNumber) || !inputWidth.getText().matches(patternNumber)){
 			function.Message("Stop", "je moet 2 cijfers invullen van 3 tot en met 22.");
 			return false;
 		}
-		else if(Integer.parseInt(l.textfield[1].getText()) > 22 || Integer.parseInt(l.textfield[2].getText()) > 22 || Integer.parseInt(l.textfield[1].getText()) <3 || Integer.parseInt(l.textfield[2].getText()) < 3){
+		else if(Integer.parseInt(inputHeight.getText()) > 22 || Integer.parseInt(inputWidth.getText()) > 22 || Integer.parseInt(inputHeight.getText()) <3 || Integer.parseInt(inputWidth.getText()) < 3){
 			function.Message("Stop", "je moet 2 cijfers invullen van 3 tot en met 22.");
 			return false;
 		}
