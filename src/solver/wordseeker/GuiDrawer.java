@@ -112,9 +112,9 @@ public class GuiDrawer extends WordseekerSolver {
 			}
 			teller1++;
 		}
-		l.Label(20, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1), "Dit woord zoek ik:", 1);
-		l.Textfield(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+1), "", 1);
-		l.Button(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+2), "Zoek woord!", 1);
+		l.Label(20, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+1), "Dit woord zoek ik:", 1);
+		l.Textfield(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+2), "", 1);
+		l.Button(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+3), "Zoek woord!", 1);
 		
 		l.button[1].setBackground(buttonColor);
 		l.button[1].setBorder(emptyBorder);
@@ -166,7 +166,6 @@ public class GuiDrawer extends WordseekerSolver {
 		l.Label(20, 180, 1, 1, 1, 5, "Made By MrNapolion", 2);
 
 		l.frame[2].pack();
-		System.out.println("=====================");
 		teller1= 3;
 		while(teller1 < 9){
 			l.label[teller1].setForeground(textColor);

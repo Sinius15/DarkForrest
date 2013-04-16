@@ -7,9 +7,9 @@ public class MiscFunction extends WordseekerSolver{
 
 	void ResetAllFiedls(){
 		teller1 = 1;
-		while(teller1 <= letterHoogte){
+		while(teller1 <= letterBreedte){
 			teller2 = 1;
-			while(teller2 <= letterBreedte){
+			while(teller2 <= letterHoogte){
 				letterVeld[teller1][teller2].setText("");
 				teller2++;
 			}
@@ -17,11 +17,11 @@ public class MiscFunction extends WordseekerSolver{
 		}
 	}
 	
-	void FillAllFields(int TotalFieldNr){
+	void FillAllFields(int TotalFieldNr){		//werkt weer
 		teller1 = 1;
-		while(teller1 <= letterHoogte){
+		while(teller1 <= letterBreedte){
 			teller2 = 1;
-			while(teller2 <= letterBreedte){
+			while(teller2 <= letterHoogte){
 				if(letterVeld[teller1][teller2].getText().isEmpty()){
 					random = new Random();
 					randomChar = (char)(random.nextInt(26) + 'a');
@@ -32,12 +32,13 @@ public class MiscFunction extends WordseekerSolver{
 			teller1++;
 		}
 	}
-	
-	void ClearColor(){
+		
+	void ClearColor(){			//werkt weer
 		teller1 = 1;
-		while(teller1 <= letterHoogte){
+		while(teller1 <= letterBreedte){		
 			teller2 = 1;
-			while(teller2 <= letterBreedte){
+			while(teller2 <= letterHoogte){
+				System.out.println("nu ben ik in letterVeld["+teller1+"]["+teller2+"]");
 				letterVeld[teller1][teller2].setBackground(textfieldColor);
 				teller2++;
 			}

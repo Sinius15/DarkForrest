@@ -30,7 +30,7 @@ public class MenuBar extends WordseekerSolver{
 		startupScreenItem3.get().setForeground(textColor);
 		startupScreenItem3.get().setBorder(emptyBorder);
 		
-		startupScreenMenu1.get().addActionListener(savingSystem.OpenWordseeker());
+		startupScreenItem1.get().addActionListener(savingSystem.OpenWordseeker());
 		startupScreenItem2.get().addActionListener(action.About());
 		startupScreenItem3.get().addActionListener(action.Exit());
 		

@@ -32,6 +32,8 @@ public class Action extends WordseekerSolver{
 		if(checker.CheckIfValidStartScreen() == true){
 			letterBreedte = Integer.parseInt(inputWidth.getText());
 			letterHoogte = Integer.parseInt(inputHeight.getText());
+			System.out.println("de hoogte is: " + letterHoogte);
+			System.out.println("de Breedte is: "+ letterBreedte);
 			startupScreen.get().dispose();
 			drawer.DrawGUI3(letterHoogte, letterBreedte);
 		}

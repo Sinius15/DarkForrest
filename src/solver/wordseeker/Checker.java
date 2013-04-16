@@ -4,9 +4,9 @@ public class Checker extends WordseekerSolver{
 
 	boolean CheckIfValidAlleHokjes(){
 		teller1 = 1;
-		while(teller1 < letterHoogte){
+		while(teller1 < letterBreedte){
 			teller2 = 1;
-			while(teller2 < letterBreedte){
+			while(teller2 < letterHoogte){
 				gezochtWoord = letterVeld[teller1][teller2].getText();
 				teller3 = gezochtWoord.length();
 				if(gezochtWoord.isEmpty() == true){

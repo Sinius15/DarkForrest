@@ -88,21 +88,25 @@ public class WordseekerSolver {
 			
 	/*hieronder alles voor GUI layout*/
 	public static JTextField[][] letterVeld = new JTextField[22][22];				//horizontaal en verticaal
-	public static JScrollPane scrollPane;
+	public static JScrollPane scrollPane;//not being used right now...
 	
 	public static LFrame startupScreen;							  ///////////////
 	public static LButton startupButton = new LButton();			//
-	public static LTextField inputHeight = new LTextField();		//	dit is allemaal voor 
-	public static LTextField inputWidth = new LTextField();			//	het eerste schermpje
+	public static LTextField inputHeight = new LTextField();		//	
+	public static LTextField inputWidth = new LTextField();			//	
 	public static LLabel label1 = new LLabel();						//
-	public static LLabel label2 = new LLabel();					  ////////////////
-	public static LMenuBar startupScreenBar = new LMenuBar();
-	public static LMenu startupScreenMenu1;
-	public static LMenu startupScreenMenu2;
-	public static LMenuItem startupScreenItem1;
-	public static LMenuItem startupScreenItem2;
-	public static LMenuItem startupScreenItem3;
+	public static LLabel label2 = new LLabel();					  	//	dit is allemaal voor 
+	public static LMenuBar startupScreenBar = new LMenuBar();		//	het eerste schermpje
+	public static LMenu startupScreenMenu1;							//
+	public static LMenu startupScreenMenu2;							//
+	public static LMenuItem startupScreenItem1;						//
+	public static LMenuItem startupScreenItem2;						//
+	public static LMenuItem startupScreenItem3;					  ////////////////////
 	
+	public static LFrame mainScreen;
+	public static LButton seekButton = new LButton();
+	public static LTextField inputWord = new LTextField();
+	public static LLabel label3 = new LLabel();
 	
 	public static void main(String[] args){
 		thread0.Start();

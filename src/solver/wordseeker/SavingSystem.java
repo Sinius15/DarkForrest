@@ -19,14 +19,14 @@ public class SavingSystem extends WordseekerSolver{
 			else if(letterBreedte < 3 && letterHoogte < 3){function.Message("Stop", "sorry, minimale hoogte en breedte is 3");}
 			else{
 				
-				l.frame[0].dispose();
+				startupScreen.get().dispose();
 				drawer.DrawGUI3(letterHoogte, letterBreedte);
 				teller1 = 1;	//hoogte
 				teller2 = 1;	//breedte
 				teller3 = 3;
-				while(teller1 <= letterHoogte){
+				while(teller1 <= letterBreedte){
 					teller2 = 1;
-					while(teller2<= letterBreedte){
+					while(teller2<= letterHoogte){
 						letterVeld[teller1][teller2].setText(InportFile[2][teller3]);
 						teller2++;
 						teller3++;
@@ -50,9 +50,9 @@ public class SavingSystem extends WordseekerSolver{
 			      file.Write(fileOut, String.valueOf(letterHoogte));
 			      
 			      teller1 = 1;
-			      while(teller1 <= letterHoogte){
+			      while(teller1 <= letterBreedte){
 			    	  teller2 = 1;
-			    	  while(teller2 <= letterBreedte){
+			    	  while(teller2 <= letterHoogte){
 			    		  file.Write(fileOut, letterVeld[teller1][teller2].getText());
 			    		  teller2++;
 			    	  }
