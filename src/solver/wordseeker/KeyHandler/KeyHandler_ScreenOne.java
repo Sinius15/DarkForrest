@@ -10,7 +10,7 @@ public class KeyHandler_ScreenOne extends WordseekerSolver implements KeyListene
 		@Override
 		public void keyPressed(KeyEvent key) {
 			if(key.getKeyCode() == KeyEvent.VK_ENTER){
-				l.button[0].doClick();
+				startupButton.get().doClick();
 			}	
 		}
 

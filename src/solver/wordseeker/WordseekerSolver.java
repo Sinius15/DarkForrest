@@ -96,7 +96,12 @@ public class WordseekerSolver {
 	public static LTextField inputWidth = new LTextField();			//	het eerste schermpje
 	public static LLabel label1 = new LLabel();						//
 	public static LLabel label2 = new LLabel();					  ////////////////
-	
+	public static LMenuBar startupScreenBar = new LMenuBar();
+	public static LMenu startupScreenMenu1;
+	public static LMenu startupScreenMenu2;
+	public static LMenuItem startupScreenItem1;
+	public static LMenuItem startupScreenItem2;
+	public static LMenuItem startupScreenItem3;
 	
 	
 	public static void main(String[] args){

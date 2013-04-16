@@ -1,41 +1,45 @@
 package solver.wordseeker;
 
+import api.LegendsDarkApi_New.LMenu;
+import api.LegendsDarkApi_New.LMenuItem;
+
 public class MenuBar extends WordseekerSolver{
 
 	void StartupScherm(){
-		l.Menubar(0);
-		l.Menu("File", 0);
-			l.Menuitem("Open", 0);
-		l.Menu("Help", 0);
-			l.Menuitem("About", 1);
-			l.Menuitem("Exit", 1);
+		
+		startupScreenMenu1 = new LMenu("File");
+			startupScreenItem1 = new LMenuItem("Open");
+		startupScreenMenu2 = new LMenu("Help");
+			startupScreenItem2 = new LMenuItem("About");
+			startupScreenItem3 = new LMenuItem("Exit");
 			
-		l.menubar[0].setBackground(menubarColor);
-		l.menubar[0].setForeground(textColor);
-		l.menubar[0].setBorder(emptyBorder);
-		l.menu[0].setForeground(textColor);
-		l.menu[0].setBorder(emptyBorder);
-		l.menu[1].setForeground(textColor);
-		l.menu[1].setBorder(emptyBorder);
+		startupScreenBar.get().setBackground(menubarColor);
+		startupScreenBar.get().setForeground(textColor);
+		startupScreenBar.get().setBorder(emptyBorder);
+		startupScreenMenu1.get().setForeground(textColor);
+		startupScreenMenu1.get().setBorder(emptyBorder);
+		startupScreenMenu2.get().setForeground(textColor);
+		startupScreenMenu2.get().setBorder(emptyBorder);
+		startupScreenItem1.get().setBackground(menubarColor);
+		startupScreenItem1.get().setForeground(textColor);
+		startupScreenItem1.get().setBorder(emptyBorder);
+		startupScreenItem2.get().setBackground(menubarColor);
+		startupScreenItem2.get().setForeground(textColor);
+		startupScreenItem2.get().setBorder(emptyBorder);
+		startupScreenItem3.get().setBackground(menubarColor);
+		startupScreenItem3.get().setForeground(textColor);
+		startupScreenItem3.get().setBorder(emptyBorder);
 		
-		l.menuitem[0].setBackground(menubarColor);
-		l.menuitem[0].setForeground(textColor);
-		l.menuitem[0].setBorder(emptyBorder);
+		startupScreenMenu1.get().addActionListener(savingSystem.OpenWordseeker());
+		startupScreenItem2.get().addActionListener(action.About());
+		startupScreenItem3.get().addActionListener(action.Exit());
 		
-		l.menuitem[1].setBackground(menubarColor);
-		l.menuitem[1].setForeground(textColor);
-		l.menuitem[1].setBorder(emptyBorder);
-		
-		l.menuitem[2].setBackground(menubarColor);
-		l.menuitem[2].setForeground(textColor);
-		l.menuitem[2].setBorder(emptyBorder);
-		
-		l.menuitem[0].addActionListener(savingSystem.OpenWordseeker());
-		
-		l.menuitem[1].addActionListener(action.About());
-		
-		l.menuitem[2].addActionListener(action.Exit());
-		
+		startupScreen.addJMenuBar(startupScreenBar);
+		startupScreenBar.addMenu(startupScreenMenu1);
+		startupScreenBar.addMenu(startupScreenMenu2);
+		startupScreenMenu1.addMenuItem(startupScreenItem1);
+		startupScreenMenu2.addMenuItem(startupScreenItem2);
+		startupScreenMenu2.addMenuItem(startupScreenItem3);
 	}
 	
 	void MainScherm(){

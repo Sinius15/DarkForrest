@@ -2,7 +2,6 @@ package api.LegendsDarkApi_New;
 
 import java.awt.Color;
 import java.awt.GridBagLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,6 +21,10 @@ public class LFrame {
 
 	public JFrame get(){
 		return frame;
+	}
+	
+	public JPanel getPanel(){
+		return panel;
 	}
 	
 	public void setTitel(String s){

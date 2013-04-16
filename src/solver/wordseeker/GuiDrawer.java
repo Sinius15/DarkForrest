@@ -47,8 +47,6 @@ public class GuiDrawer extends WordseekerSolver {
 		startupButton.setGridSize(2, 1);
 		startupButton.get().addActionListener(action.Start());
 		
-		
-		
 		startupScreen = new LFrame();
 		startupScreen.setVisable(false);
 		startupScreen.setBackground(backgroundColor);
@@ -60,10 +58,18 @@ public class GuiDrawer extends WordseekerSolver {
 		
 		
 		startupScreen.setTitel("Wordseeker Solver");
+		bar.StartupScherm();
 		startupScreen.get().setResizable(false);
 		startupScreen.revalidate();
 		startupScreen.get().pack();
 		startupScreen.setVisable(true);
+		startupScreen.getPanel().addKeyListener(keyHandler1);
+		inputWidth.get().addKeyListener(keyHandler1);
+		inputHeight.get().addKeyListener(keyHandler1);
+		
+		
+		inputWidth.get().requestFocus();
+		
 	}
 	
 	void DrawGUI2(){		//maakt een klein onzichtbaar scherm tijdens opstarten voor het later maken van GUI3
@@ -87,10 +93,10 @@ public class GuiDrawer extends WordseekerSolver {
 		bar.MainScherm();
 		
 		teller1 = 1;
-		while(teller1 <= letterHoogte){
+		while(teller1 <= letterBreedte){
 			teller2 = 1;
-			while(teller2 <= letterBreedte){
-				letterVeld[teller1][teller2] = new JTextField("");
+			while(teller2 <= letterHoogte){
+				letterVeld[teller1][teller2] = new JTextField();
 				letterVeld[teller1][teller2].setVisible(true);
 				letterVeld[teller1][teller2].setPreferredSize(new Dimension(50, 50));
 				l.Gridbag(teller1, teller2, 1, 1, 1);
@@ -106,9 +112,9 @@ public class GuiDrawer extends WordseekerSolver {
 			}
 			teller1++;
 		}
-		l.Label(20, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1), "Dit woord zoek ik:", 1);
-		l.Textfield(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+1), "", 1);
-		l.Button(50, (50*letterBreedte + 2*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+2), "Zoek woord!", 1);
+		l.Label(20, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1), "Dit woord zoek ik:", 1);
+		l.Textfield(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+1), "", 1);
+		l.Button(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (teller1+2), "Zoek woord!", 1);
 		
 		l.button[1].setBackground(buttonColor);
 		l.button[1].setBorder(emptyBorder);
