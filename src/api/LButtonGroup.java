@@ -1,13 +1,10 @@
-package api.LegendsDarkApi_New;
-
-import java.awt.GridBagConstraints;
+package api;
 
 import javax.swing.ButtonGroup;
 
 public class LButtonGroup {
 
 	private ButtonGroup comp;
-	private GridBagConstraints plc;
 	
 	public LButtonGroup() {
 		comp = new ButtonGroup();
@@ -17,11 +14,11 @@ public class LButtonGroup {
 		return comp;
 	}
 	
-	public GridBagConstraints getPlc(){
-		return plc;
+	public void add(LRadioButton b){
+		comp.add(b.get());
 	}
 	
-	public void add(LRadioButton b){
+	public void add(LRadioButtonMenuItem b){
 		comp.add(b.get());
 	}
 }

@@ -1,17 +1,16 @@
 package solver.wordseeker;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import api.LegendsDarkApi_New.*;
+
+import api.LFrame;
+import api.LTextField;
 
 public class GuiDrawer extends WordseekerSolver {
 	/*
@@ -56,7 +55,6 @@ public class GuiDrawer extends WordseekerSolver {
 		startupScreen.add(inputHeight);
 		startupScreen.add(startupButton);
 		
-		
 		startupScreen.setTitel("Wordseeker Solver");
 		bar.StartupScherm();
 		startupScreen.get().setResizable(false);
@@ -67,111 +65,95 @@ public class GuiDrawer extends WordseekerSolver {
 		inputWidth.get().addKeyListener(keyHandler1);
 		inputHeight.get().addKeyListener(keyHandler1);
 		
-		
 		inputWidth.get().requestFocus();
-		
 	}
 	
-	void DrawGUI2(){		//maakt een klein onzichtbaar scherm tijdens opstarten voor het later maken van GUI3
-		l.frameTeller = 1;
-		l.panelTeller = 1;
-		l.Frame(1,1,"WordSeeker Solver");
-		l.frame[1].setVisible(false);
-		l.panel[1].setBackground(backgroundColor);
+	void DrawGUI2(){		//niet meer nodig!
 	}
 	
 	void DrawGUI3(int letterHoogte, int letterBreedte){		//maakt het 2de scherm met alle hokjes
-		l.textfieldTeller = 1;
-		l.labelTeller = 1;
-		l.frameTeller = 1;
-		l.buttonTeller = 1;
 		frameHoogte = letterHoogte * 50 + (letterHoogte *10) + 600;
 		frameBreedte = letterBreedte * 50 + (letterBreedte *10) + 400;
 		letterAantal = letterHoogte * letterBreedte;
-		l.frame[1].setVisible(true);
-		l.frame[1].setSize(frameBreedte, frameHoogte);
+		
+		mainScreen = new LFrame();
+		mainScreen.setVisable(false);
+		mainScreen.setTitel("Wordseeker Solver");
+		mainScreen.setSize(frameBreedte, frameHoogte);
+		mainScreen.setBackground(backgroundColor);
+		
 		bar.MainScherm();
 		
 		teller1 = 1;
 		while(teller1 <= letterBreedte){
 			teller2 = 1;
 			while(teller2 <= letterHoogte){
-				letterVeld[teller1][teller2] = new JTextField();
-				letterVeld[teller1][teller2].setVisible(true);
-				letterVeld[teller1][teller2].setPreferredSize(new Dimension(50, 50));
-				l.Gridbag(teller1, teller2, 1, 1, 1);
-				l.panel[1].add(letterVeld[teller1][teller2], l.gridBag[l.gridbagTeller]);
-				letterVeld[teller1][teller2].setFont(font);
+				letterVeld[teller1][teller2] = new LTextField();
+				letterVeld[teller1][teller2].setSize(50,50);
+				letterVeld[teller1][teller2].setPlace(teller1, teller2);
+				mainScreen.add(letterVeld[teller1][teller2]);
+				letterVeld[teller1][teller2].get().setFont(font);
 				letterVeld[teller1][teller2].setBackground(textfieldColor);
-				letterVeld[teller1][teller2].setBorder(emptyBorder);
-				letterVeld[teller1][teller2].setForeground(textColor);
-				letterVeld[teller1][teller2].addKeyListener(keyHandler2);
+				letterVeld[teller1][teller2].get().setBorder(emptyBorder);
+				letterVeld[teller1][teller2].get().setForeground(textColor);
+				letterVeld[teller1][teller2].get().addKeyListener(keyHandler2);
 				teller3++;
 				teller2++;
-				l.frame[1].revalidate();
 			}
 			teller1++;
 		}
-		l.Label(20, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+1), "Dit woord zoek ik:", 1);
-		l.Textfield(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+2), "", 1);
-		l.Button(50, (52*letterBreedte -2), 1, letterBreedte+1, 0, (letterHoogte+3), "Zoek woord!", 1);
+		System.out.println(letterBreedte+1);
+		label3.setPlace(0, letterHoogte+1);
+		label3.setGridSize(letterBreedte+1, 1);
+		label3.setSize(52*letterBreedte-2, 20);
+		label3.setText("Dit woord zoek ik");
+		label3.setForground(textColor);
+		mainScreen.add(label3);
 		
-		l.button[1].setBackground(buttonColor);
-		l.button[1].setBorder(emptyBorder);
-		l.button[1].setForeground(textColor);
-		
-		
-		l.label[1].setForeground(textColor);
-		l.textfield[1].setBackground(textfieldColor);
-		l.textfield[1].setBorder(emptyBorder);
-		l.textfield[1].setForeground(textColor);
-		l.textfield[1].addKeyListener(keyHandler2);		
+		inputWord.setPlace(0, letterHoogte+2);
+		inputWord.setGridSize(letterBreedte+1, 1);
+		inputWord.setSize(52*letterBreedte-2, 50);
+		inputWord.setBackground(textfieldColor);
+		inputWord.get().setBorder(emptyBorder);
+		inputWord.get().setForeground(textColor);
+		inputWord.get().addKeyListener(keyHandler2);
+		mainScreen.add(inputWord);
 
-		l.button[1].addActionListener(new ActionListener() {@Override
+		seekButton.setPlace(0, letterHoogte+3);
+		seekButton.setGridSize(letterBreedte+1, 1);
+		seekButton.setSize(52*letterBreedte-2, 50);
+		seekButton.setText("Zoek!");
+		seekButton.setBackground(buttonColor);
+		seekButton.get().setBorder(emptyBorder);
+		seekButton.get().setForeground(textColor);
+		mainScreen.add(seekButton);
+		
+		
+		
+		seekButton.get().addActionListener(new ActionListener() {@Override
 			public void actionPerformed(ActionEvent e) {
 				if(checker.CheckIfValidAlleHokjes() == true){
-					if(l.radiobuttonmenuitem[0].isSelected()){
+					if(mainScreenRadioItem1.get().isSelected()){
 						function.ClearColor();
 						//zoeker.zoekAlleWoorden();
 						function.Message("Sorry", "Dit deel is nog onder consturctie.");
 					}
 					else{
 						function.ClearColor();
-						zoeker.ZoekWoord(l.textfield[1].getText());
+						zoeker.ZoekWoord(inputWord.getText());
 					}
-					
 				}else{}
 		}});
 		
-		l.frame[1].revalidate();
-        l.frame[1].setResizable(false);
-        l.frame[1].setLocationRelativeTo(null);
-        l.frame[1].pack();
-        
-        letterVeld[1][1].requestFocus();
+		mainScreen.revalidate();
+		mainScreen.get().setResizable(false);
+		mainScreen.get().setLocationRelativeTo(null);
+		mainScreen.get().pack();
+		mainScreen.setVisable(true);
+        letterVeld[1][1].get().requestFocus();
 	}
-
+	
 	void About(){		//maakt het About schermpje
-		System.out.println("=====================");
-		l.frameTeller = 2;
-		l.panelTeller = 2;
-		l.labelTeller = 3;
-		l.Frame(120, 250, "About");
-		l.frame[2].setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		l.Label(5, 180, 1, 1, 1, 0, "", 2);
-		l.Label(10, 180, 1, 1, 1, 1, "WordSeeker Solver", 2);
-		l.Label(5, 180, 1, 1, 1, 2, "", 2);
-		l.Label(10, 180, 1, 1, 1, 3, "Versie 2.0", 2);
-		l.Label(5, 180, 1, 1, 1, 4, "", 2);
-		l.Label(20, 180, 1, 1, 1, 5, "Made By MrNapolion", 2);
-
-		l.frame[2].pack();
-		teller1= 3;
-		while(teller1 < 9){
-			l.label[teller1].setForeground(textColor);
-			teller1++;
-		}
-		l.panel[2].setBackground(backgroundColor);
 	}
 	
 	String GetOpenPath(){		//maakt het fileChooser schermpje,  voor het openen
@@ -200,27 +182,6 @@ public class GuiDrawer extends WordseekerSolver {
 			return fileOutString = filechooser.getSelectedFile().getAbsolutePath();
 		}
 		return null;
-	}
-	
-	void Outputscherm(){
-		l.frameTeller = 10;
-		l.panelTeller = 10;
-		l.labelTeller = 10;
-		l.textareaTeller = 10;
-		
-		l.Frame(500, 300, "Gevonden Woorden");
-		l.Label(400, 250, 1, 1, 1, 1, "Dit zijn de gevonden woorden:", 10);
-		l.TextArea(480, 250, 1, 1, 1, 2, "", 10);
-		
-		l.frame[10].setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		scrollPane = new JScrollPane(l.textarea[10]); 
-		
-		l.textarea[10].add(scrollPane);
-		l.textarea[10].setEditable(false);
-	}
-	
-	void OutputschermAdd(String txt){
-		l.textarea[10].setText(l.textarea[10].getText() + " \n " + txt);
 	}
 	
 	void Restart() throws URISyntaxException		//deze functie is de enigge funcie die ik niet zelf heb geschreven, deze is ook onbegrijpelijk XD

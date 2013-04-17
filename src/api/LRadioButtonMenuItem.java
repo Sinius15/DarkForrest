@@ -1,15 +1,15 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 
-import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
-public class LCheckBoxMenuItem {
+public class LRadioButtonMenuItem {
 
-	private JCheckBoxMenuItem comp;
+	private JRadioButtonMenuItem comp;
 	
-	public LCheckBoxMenuItem(String s) {
-		comp = new JCheckBoxMenuItem();
+	public LRadioButtonMenuItem(String s) {
+		comp = new JRadioButtonMenuItem();
 		comp.setVisible(true);
 		this.setText(s);
 	}
@@ -18,10 +18,10 @@ public class LCheckBoxMenuItem {
 		comp.setText(s);
 	}
 	
-	public JCheckBoxMenuItem get() {
+	public JRadioButtonMenuItem get() {
 		return comp;
 	}
-
+	
 	public void setState(boolean b){
 		comp.setSelected(b);
 	}
@@ -35,4 +35,5 @@ public class LCheckBoxMenuItem {
 		comp.setBackground(c);
 		comp.revalidate();
 	}
+
 }

@@ -9,8 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import solver.wordseeker.KeyHandler.*;
 import solver.wordseeker.Threading.*;
-import api.LegendsDarkApi;
-import api.LegendsDarkApi_New.*;
+import api.*;
 
 public class WordseekerSolver {
 
@@ -57,7 +56,6 @@ public class WordseekerSolver {
 	public static MenuBar bar = new MenuBar();							
 	public static Action action = new Action();
 	public static Config config = new Config();
-	public static LegendsDarkApi l = new LegendsDarkApi();
 	public static KeyHandler_ScreenOne keyHandler1 = new KeyHandler_ScreenOne();
 	public static KeyHandler_ScreenTwo keyHandler2 = new KeyHandler_ScreenTwo();
 	public static SavingSystem savingSystem = new SavingSystem();
@@ -87,7 +85,7 @@ public class WordseekerSolver {
 	public static BufferedWriter out;
 			
 	/*hieronder alles voor GUI layout*/
-	public static JTextField[][] letterVeld = new JTextField[22][22];				//horizontaal en verticaal
+	
 	public static JScrollPane scrollPane;//not being used right now...
 	
 	public static LFrame startupScreen;							  ///////////////
@@ -104,9 +102,27 @@ public class WordseekerSolver {
 	public static LMenuItem startupScreenItem3;					  ////////////////////
 	
 	public static LFrame mainScreen;
+	public static LTextField[][] letterVeld = new LTextField[22][22];				//horizontaal en verticaal
 	public static LButton seekButton = new LButton();
 	public static LTextField inputWord = new LTextField();
 	public static LLabel label3 = new LLabel();
+	
+	public static LMenuBar mainScreenBar = new LMenuBar();
+	public static LMenu mainScreenMenu1;
+	public static LMenu mainScreenMenu2;
+	public static LMenu mainScreenMenu3;
+	public static LMenuItem mainScreenItem1;
+	public static LMenuItem mainScreenItem2;
+	public static LMenuItem mainScreenItem3;
+	public static LMenuItem mainScreenItem4;
+	public static LMenuItem mainScreenItem5;
+	public static LMenuItem mainScreenItem6;
+	public static LRadioButtonMenuItem mainScreenRadioItem1;
+	public static LRadioButtonMenuItem mainScreenRadioItem2;
+	public static LCheckBoxMenuItem mainScreenCheckItem1;
+	public static LCheckBoxMenuItem mainScreenCheckItem2;
+	public static LCheckBoxMenuItem mainScreenCheckItem3;
+	public static LButtonGroup buttongroup;
 	
 	public static void main(String[] args){
 		thread0.Start();
@@ -114,25 +130,6 @@ public class WordseekerSolver {
 	}
 	
 	public static void mainProgram() {
-		l.frameMax = 10;
-		l.labelMax = 10;
-		l.buttonMax = 10;
-		l.gridbagMax = 100;
-		l.textfieldMax = 10;
-		l.checkboxMax = 10;
-		l.radiobuttonMax = 10;
-		l.buttongroupMax = 10;
-		l.passwordfieldMax = 10;
-		l.progressbarMax = 10;
-		l.textareaMax = 10;
-		l.menubarMax = 10;
-		l.menuMax = 10;
-		l.menuitemMax = 10;
-		l.checkboxmenuitemMax = 10;
-		l.radiobuttonmenuitemMax = 10;
-		
-		l.textfieldTeller = 1;
-		l.Init();
 		
 		if(config.Init() == false){
 			file.Copy(new File("res/Config.ini"), configPath);

@@ -1,19 +1,18 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JLabel;
 
-import javax.swing.JButton;
+public class LLabel {
 
-public class LButton {
-
-	private JButton comp;
+	private JLabel comp;
 	private GridBagConstraints plc;
 	
-	public LButton() {
-		comp = new JButton();
+	public LLabel() {
+		comp = new JLabel();
 		comp.setVisible(true);
 	}
 
@@ -26,7 +25,7 @@ public class LButton {
 		comp.setSize(x,y);
 	}
 	
-	public JButton get() {
+	public JLabel get() {
 		return comp;
 	}
 	
@@ -40,6 +39,14 @@ public class LButton {
 		plc.gridx = x;
 		plc.gridy = y;
 		plc.anchor = GridBagConstraints.NORTHWEST;
+	}
+	
+	public String getText(){
+		return comp.getText();
+	}
+	
+	public void addString(String s){
+		this.setText(this.getText()+"\n"+s);
 	}
 	
 	public void setForground(Color c){

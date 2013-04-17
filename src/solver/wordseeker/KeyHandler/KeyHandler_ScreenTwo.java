@@ -11,9 +11,9 @@ public class KeyHandler_ScreenTwo extends WordseekerSolver implements KeyListene
 		public void keyPressed(KeyEvent key) {
 			
 			switch(key.getKeyCode()){
-			case KeyEvent.VK_ENTER: 		l.button[1].doClick();
+			case KeyEvent.VK_ENTER: 		seekButton.get().doClick();
 				break;
-			case KeyEvent.VK_BACK_SPACE: 	if(key.isShiftDown() || key.isAltDown()){l.textfield[1].setText("");}
+			case KeyEvent.VK_BACK_SPACE: 	if(key.isShiftDown() || key.isAltDown()){inputWord.setText("");}
 				break;
 			
 			

@@ -1,18 +1,19 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JRadioButton;
 
-public class LRadioButton {
+import javax.swing.JButton;
 
-	private JRadioButton comp;
+public class LButton {
+
+	private JButton comp;
 	private GridBagConstraints plc;
 	
-	public LRadioButton() {
-		comp = new JRadioButton();
+	public LButton() {
+		comp = new JButton();
 		comp.setVisible(true);
 	}
 
@@ -25,7 +26,7 @@ public class LRadioButton {
 		comp.setSize(x,y);
 	}
 	
-	public JRadioButton get() {
+	public JButton get() {
 		return comp;
 	}
 	
@@ -39,10 +40,6 @@ public class LRadioButton {
 		plc.gridx = x;
 		plc.gridy = y;
 		plc.anchor = GridBagConstraints.NORTHWEST;
-	}
-	
-	public void setState(boolean b){
-		comp.setSelected(b);
 	}
 	
 	public void setForground(Color c){

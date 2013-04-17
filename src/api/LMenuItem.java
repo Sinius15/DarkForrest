@@ -1,4 +1,4 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 

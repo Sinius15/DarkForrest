@@ -72,7 +72,7 @@ public class FileHandler extends WordseekerSolver{
 				teller1 = 1;
 				while(scanner.hasNext()){
 					InportFile[naam][teller1] = scanner.next();
-					System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
+					//System.out.println("bestand geopend: " + path+"       opgeslagen in: InportFile["+naam+"]["+teller1+"]       opgeslagen text: "+InportFile[naam][teller1]);
 					teller1++;
 				}
 				scanner.close();

@@ -1,4 +1,4 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 
@@ -23,6 +23,14 @@ public class LMenu {
 	}
 
 	public void addMenuItem(LMenuItem m){
+		comp.add(m.get());
+	}
+	
+	public void addMenuItem(LRadioButtonMenuItem m){
+		comp.add(m.get());
+	}
+	
+	public void addMenuItem(LCheckBoxMenuItem m){
 		comp.add(m.get());
 	}
 	

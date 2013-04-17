@@ -1,7 +1,6 @@
 package solver.wordseeker;
 
-import api.LegendsDarkApi_New.LMenu;
-import api.LegendsDarkApi_New.LMenuItem;
+import api.*;
 
 public class MenuBar extends WordseekerSolver{
 
@@ -43,90 +42,100 @@ public class MenuBar extends WordseekerSolver{
 	}
 	
 	void MainScherm(){
-		l.menubarTeller = 0;
-		l.menuTeller = 0;
-		l.menuitemTeller = 0;
-		l.checkboxmenuitemTeller = 0;
 		
-		l.Menubar(1);
-		l.Menu("File", 0);
-			l.Menuitem("Reset alle velden",0);   //0
-			l.Menuitem("Vul alle velde in", 0);	//1
-			l.Menuitem("Save woordzoeker", 0);	//2
-			l.Menuitem("Ga terug naar begin scherm", 0);	//3
-		l.Menu("Instellingen",0);	
-			l.CheckBoxMenuItem("Zoek horizontaal", zoekHorizontaal, 1);
-			l.CheckBoxMenuItem("Zoek Verticaal", zoekVerticaal, 1);
-			l.CheckBoxMenuItem("Zoek Diagonaal", zoekDiagonaal, 1);
-			l.RadioButtonMenuItem("Vergelijk met wordenboek(DEV.)", false, 1);	//0
-			l.RadioButtonMenuItem("Vegelijk met eigen woord", true, 1);		//1
-		l.Menu("Help",0);
-			l.Menuitem("About",2);		//4
-			l.Menuitem("Exit",2);			//5
-		l.Buttongroup();
+		mainScreenMenu1 = new LMenu("File");
+			mainScreenItem1 = new LMenuItem("Reset alle velden");
+			mainScreenItem2 = new LMenuItem("Vul alle velden in");
+			mainScreenItem3 = new LMenuItem("Save woordzoeker");
+			mainScreenItem4 = new LMenuItem("Ga terug naar het begin scherm");
+		mainScreenMenu2 = new LMenu("Instellingen");
+			mainScreenCheckItem1 = new LCheckBoxMenuItem("Zoek horizontaal");
+			mainScreenCheckItem2 = new LCheckBoxMenuItem("Zoek Verticaal");
+			mainScreenCheckItem3 = new LCheckBoxMenuItem("Zoek Diagonaal");
+			mainScreenRadioItem1 = new LRadioButtonMenuItem("Vergelijk met woordenboek");
+			mainScreenRadioItem2 = new LRadioButtonMenuItem("Vergelijk met eigen woord");
+		mainScreenMenu3 = new LMenu("Help");
+			mainScreenItem5 = new LMenuItem("About");
+			mainScreenItem6 = new LMenuItem("Exit");
+		
+		buttongroup = new LButtonGroup();
+		buttongroup.add(mainScreenRadioItem1);
+		buttongroup.add(mainScreenRadioItem2);
+		
+		mainScreen.addJMenuBar(mainScreenBar);
+		mainScreenBar.addMenu(mainScreenMenu1);
+			mainScreenMenu1.addMenuItem(mainScreenItem1);
+			mainScreenMenu1.addMenuItem(mainScreenItem2);
+			mainScreenMenu1.addMenuItem(mainScreenItem3);
+			mainScreenMenu1.addMenuItem(mainScreenItem4);
+		mainScreenBar.addMenu(mainScreenMenu2);
+			mainScreenMenu2.addMenuItem(mainScreenCheckItem1);
+			mainScreenMenu2.addMenuItem(mainScreenCheckItem2);
+			mainScreenMenu2.addMenuItem(mainScreenCheckItem3);
+			mainScreenMenu2.addMenuItem(mainScreenRadioItem1);
+			mainScreenMenu2.addMenuItem(mainScreenRadioItem2);
+		mainScreenBar.addMenu(mainScreenMenu3);
+			mainScreenMenu3.addMenuItem(mainScreenItem5);
+			mainScreenMenu3.addMenuItem(mainScreenItem6);
+		
+		mainScreenCheckItem1.setState(zoekHorizontaal);
+		mainScreenCheckItem2.setState(zoekVerticaal);
+		mainScreenCheckItem3.setState(zoekDiagonaal);
+		mainScreenRadioItem2.setState(true);
+		
+		mainScreenBar.setBackground(menubarColor);
+		mainScreenItem1.setBackground(menubarColor);
+		mainScreenItem2.setBackground(menubarColor);
+		mainScreenItem3.setBackground(menubarColor);
+		mainScreenItem4.setBackground(menubarColor);
+		mainScreenItem5.setBackground(menubarColor);
+		mainScreenItem6.setBackground(menubarColor);
+		mainScreenCheckItem1.setBackground(menubarColor);
+		mainScreenCheckItem2.setBackground(menubarColor);
+		mainScreenCheckItem3.setBackground(menubarColor);
+		mainScreenRadioItem1.setBackground(menubarColor);
+		mainScreenRadioItem2.setBackground(menubarColor);
+		
+		mainScreenBar.get().setForeground(textColor);
+		mainScreenMenu1.get().setForeground(textColor);
+		mainScreenMenu2.get().setForeground(textColor);
+		mainScreenMenu3.get().setForeground(textColor);
+		mainScreenItem1.get().setForeground(textColor);
+		mainScreenItem2.get().setForeground(textColor);
+		mainScreenItem3.get().setForeground(textColor);
+		mainScreenItem4.get().setForeground(textColor);
+		mainScreenItem5.get().setForeground(textColor);
+		mainScreenItem6.get().setForeground(textColor);
+		mainScreenCheckItem1.get().setForeground(textColor);
+		mainScreenCheckItem2.get().setForeground(textColor);
+		mainScreenCheckItem3.get().setForeground(textColor);
+		mainScreenRadioItem1.get().setForeground(textColor);
+		mainScreenRadioItem2.get().setForeground(textColor);
+		
+		mainScreenBar.get().setBorder(emptyBorder);
+		mainScreenItem1.get().setBorder(emptyBorder);
+		mainScreenItem2.get().setBorder(emptyBorder);
+		mainScreenItem3.get().setBorder(emptyBorder);
+		mainScreenItem4.get().setBorder(emptyBorder);
+		mainScreenItem5.get().setBorder(emptyBorder);
+		mainScreenItem6.get().setBorder(emptyBorder);
+		mainScreenCheckItem1.get().setBorder(emptyBorder);
+		mainScreenCheckItem2.get().setBorder(emptyBorder);
+		mainScreenCheckItem3.get().setBorder(emptyBorder);
+		mainScreenRadioItem1.get().setBorder(emptyBorder);
+		mainScreenRadioItem2.get().setBorder(emptyBorder);
 			
-		l.menubar[0].setBackground(menubarColor);				
-		l.menubar[0].setForeground(textColor);
-		l.menubar[0].setBorder(emptyBorder);
+		mainScreenItem1.get().addActionListener(action.LeegAlleVelden());				//clear alle velden
 		
-		l.menu[0].setForeground(textColor);
-		l.menu[0].setBorder(emptyBorder);
-		l.menu[1].setForeground(textColor);
-		l.menu[1].setBorder(emptyBorder);
-		l.menu[2].setForeground(textColor);
-		l.menu[2].setBorder(emptyBorder);
+		mainScreenItem2.get().addActionListener(action.VulAlleVelden());				//vul alle velden
 		
-		l.menuitem[0].setBackground(menubarColor);
-		l.menuitem[0].setForeground(textColor);
-		l.menuitem[0].setBorder(emptyBorder);
-		l.menuitem[1].setBackground(menubarColor);
-		l.menuitem[1].setForeground(textColor);
-		l.menuitem[1].setBorder(emptyBorder);
-		l.menuitem[2].setBackground(menubarColor);
-		l.menuitem[2].setForeground(textColor);
-		l.menuitem[2].setBorder(emptyBorder);
-		l.menuitem[3].setBackground(menubarColor);
-		l.menuitem[3].setForeground(textColor);
-		l.menuitem[3].setBorder(emptyBorder);
-		l.menuitem[4].setBackground(menubarColor);
-		l.menuitem[4].setForeground(textColor);
-		l.menuitem[4].setBorder(emptyBorder);
-		l.menuitem[5].setBackground(menubarColor);
-		l.menuitem[5].setForeground(textColor);
-		l.menuitem[5].setBorder(emptyBorder);
-		
-		l.checkboxmenuitem[0].setBackground(menubarColor);
-		l.checkboxmenuitem[0].setForeground(textColor);
-		l.checkboxmenuitem[0].setBorder(emptyBorder);
-		l.checkboxmenuitem[1].setBackground(menubarColor);
-		l.checkboxmenuitem[1].setForeground(textColor);
-		l.checkboxmenuitem[1].setBorder(emptyBorder);	
-		l.checkboxmenuitem[2].setBackground(menubarColor);
-		l.checkboxmenuitem[2].setForeground(textColor);
-		l.checkboxmenuitem[2].setBorder(emptyBorder);
-		
-		l.radiobuttonmenuitem[0].setBackground(menubarColor);
-		l.radiobuttonmenuitem[0].setForeground(textColor);
-		l.radiobuttonmenuitem[0].setBorder(emptyBorder);
-		l.radiobuttonmenuitem[1].setBackground(menubarColor);
-		l.radiobuttonmenuitem[1].setForeground(textColor);
-		l.radiobuttonmenuitem[1].setBorder(emptyBorder);
-		
+		mainScreenItem5.get().addActionListener(action.About());						//about
 
-		l.buttongroup[0].add(l.radiobuttonmenuitem[0]);
-		l.buttongroup[0].add(l.radiobuttonmenuitem[1]);
-			
-		l.menuitem[0].addActionListener(action.LeegAlleVelden());				//clear alle velden
+		mainScreenItem6.get().addActionListener(action.Exit());						//exit
 		
-		l.menuitem[1].addActionListener(action.VulAlleVelden());				//vul alle velden
+		mainScreenItem4.get().addActionListener(action.GoBack());					//ga terug
 		
-		l.menuitem[4].addActionListener(action.About());						//about
-
-		l.menuitem[5].addActionListener(action.Exit());						//exit
-		
-		l.menuitem[3].addActionListener(action.GoBack());
-		
-		l.menuitem[2].addActionListener(savingSystem.SaveWordseeker());
+		mainScreenItem3.get().addActionListener(savingSystem.SaveWordseeker());				//save woordzoeker
 
 	}
 }

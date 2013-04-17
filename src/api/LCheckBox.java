@@ -1,18 +1,18 @@
-package api.LegendsDarkApi_New;
+package api;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
-public class LTextField {
+public class LCheckBox {
 
-	private JTextField comp;
+	private JCheckBox comp;
 	private GridBagConstraints plc;
 	
-	public LTextField() {
-		comp = new JTextField();
+	public LCheckBox() {
+		comp = new JCheckBox();
 		comp.setVisible(true);
 	}
 
@@ -25,7 +25,7 @@ public class LTextField {
 		comp.setSize(x,y);
 	}
 	
-	public JTextField get() {
+	public JCheckBox get() {
 		return comp;
 	}
 	
@@ -41,8 +41,8 @@ public class LTextField {
 		plc.anchor = GridBagConstraints.NORTHWEST;
 	}
 	
-	public String getText(){
-		return comp.getText();
+	public void setState(boolean b){
+		comp.setSelected(b);
 	}
 	
 	public void setForground(Color c){
