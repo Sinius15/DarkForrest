@@ -45,13 +45,13 @@ public class WordseekerSolver {
 	public static Random random;										//random functie
 	public static File configPath = new File(System.getProperty("user.dir") + "\\Config.ini");
 	public static boolean welkeCoordsHebIkNetBekeken[][] = new boolean[22][22];
-	public static Scanner scanner;										//gewoon een scanner voor inlezen fan files
+	public static Scanner scanner;										//gewoon een scanner voor inlezen van files
 
 	public static Zoeker zoeker = new Zoeker();							//deze alinia is voor het objectgeorienteerd programmeren, objecten
 	public static GetLetter get = new GetLetter();						
 	public static Checker checker = new Checker();					
 	public static MiscFunction function = new MiscFunction();				
-	public static GuiDrawer drawer = new GuiDrawer();					
+	public static GuiDrawer draw = new GuiDrawer();					
 	public static FileHandler file = new FileHandler();					
 	public static MenuBar bar = new MenuBar();							
 	public static Action action = new Action();
@@ -61,7 +61,7 @@ public class WordseekerSolver {
 	public static SavingSystem savingSystem = new SavingSystem();
 	public static Thread_0 thread0 = new Thread_0();								//de main thread die alles doet behalve als het door iets anders wordt gedaan XD
 	public static Thread_1 thread1 = new Thread_1();								//zorgt voor het laden van het woordenboek. opstarten hoeft niet te wachten op woordenboek dus sneller :D
-	public static Thread_Zoeker threadZoeker = new Thread_Zoeker();					//zorgt voor het zoek gebeuren, moet 8 keer aangeroepen worden.
+	public static Thread_Zoeker threadZoeker = new Thread_Zoeker();					//zorgt voor het zoek gebeuren, moet 8 keer aangeroepen worden
 	
 	public static JFileChooser filechooser;											//deze alinea is voor het filechooser gebeuren.
 	public static FileNameExtensionFilter filefilter = new FileNameExtensionFilter("wordseeker files", "woordzoeker") ;
@@ -85,9 +85,6 @@ public class WordseekerSolver {
 	public static BufferedWriter out;
 			
 	/*hieronder alles voor GUI layout*/
-	
-	public static JScrollPane scrollPane;//not being used right now...
-	
 	public static LFrame startupScreen;							  ///////////////
 	public static LButton startupButton = new LButton();			//
 	public static LTextField inputHeight = new LTextField();		//	
@@ -101,28 +98,32 @@ public class WordseekerSolver {
 	public static LMenuItem startupScreenItem2;						//
 	public static LMenuItem startupScreenItem3;					  ////////////////////
 	
-	public static LFrame mainScreen;
-	public static LTextField[][] letterVeld = new LTextField[22][22];				//horizontaal en verticaal
-	public static LButton seekButton = new LButton();
-	public static LTextField inputWord = new LTextField();
-	public static LLabel label3 = new LLabel();
+	public static LFrame mainScreen;								//////////////////////////
+	public static LTextField[][] letterVeld = new LTextField[22][22];//	letterVeld[horizontaal][verticaal]
+	public static LButton seekButton = new LButton();				//
+	public static LTextField inputWord = new LTextField();			//
+	public static LLabel label3 = new LLabel();						//
+	public static LMenuBar mainScreenBar = new LMenuBar();		  	//
+	public static LMenu mainScreenMenu1;							//
+	public static LMenu mainScreenMenu2;							//	dit is allemaal voor
+	public static LMenu mainScreenMenu3;							//	het grote MainScreen
+	public static LMenuItem mainScreenItem1;						//
+	public static LMenuItem mainScreenItem2;						//
+	public static LMenuItem mainScreenItem3;						//
+	public static LMenuItem mainScreenItem4;						//
+	public static LMenuItem mainScreenItem5;						//
+	public static LMenuItem mainScreenItem6;						//
+	public static LRadioButtonMenuItem mainScreenRadioItem1;		//
+	public static LRadioButtonMenuItem mainScreenRadioItem2;		//
+	public static LCheckBoxMenuItem mainScreenCheckItem1;			//
+	public static LCheckBoxMenuItem mainScreenCheckItem2;			//
+	public static LCheckBoxMenuItem mainScreenCheckItem3;			//
+	public static LButtonGroup buttongroup;						  ///////////////////////
 	
-	public static LMenuBar mainScreenBar = new LMenuBar();
-	public static LMenu mainScreenMenu1;
-	public static LMenu mainScreenMenu2;
-	public static LMenu mainScreenMenu3;
-	public static LMenuItem mainScreenItem1;
-	public static LMenuItem mainScreenItem2;
-	public static LMenuItem mainScreenItem3;
-	public static LMenuItem mainScreenItem4;
-	public static LMenuItem mainScreenItem5;
-	public static LMenuItem mainScreenItem6;
-	public static LRadioButtonMenuItem mainScreenRadioItem1;
-	public static LRadioButtonMenuItem mainScreenRadioItem2;
-	public static LCheckBoxMenuItem mainScreenCheckItem1;
-	public static LCheckBoxMenuItem mainScreenCheckItem2;
-	public static LCheckBoxMenuItem mainScreenCheckItem3;
-	public static LButtonGroup buttongroup;
+	public static LFrame aboutScreen;
+	public static LTextArea aboutText;
+	public static LButton aboutStop;
+	public static boolean aboutIsOpen = false;
 	
 	public static void main(String[] args){
 		thread0.Start();
@@ -136,8 +137,7 @@ public class WordseekerSolver {
 			config.Init();
 		}
 		
-		drawer.DrawGUI1();
-		drawer.DrawGUI2();
+		draw.startupScreen();
 	}
 
 }

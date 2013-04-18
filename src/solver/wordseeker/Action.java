@@ -15,7 +15,9 @@ public class Action extends WordseekerSolver{
 	}};}
 
 	public ActionListener About() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //maak het "About" schermpje
-		drawer.About();
+		if(!aboutIsOpen){
+			draw.About();
+		}
 	}};}
 	
 	public ActionListener VulAlleVelden() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //vult alle velden
@@ -35,16 +37,20 @@ public class Action extends WordseekerSolver{
 			System.out.println("de hoogte is: " + letterHoogte);
 			System.out.println("de Breedte is: "+ letterBreedte);
 			startupScreen.get().dispose();
-			drawer.DrawGUI3(letterHoogte, letterBreedte);
+			draw.MainScreen(letterHoogte, letterBreedte);
 		}
 	}};}
 	
 	public ActionListener GoBack() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
 		try {
-			drawer.Restart();
+			draw.Restart();
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		}
-
+	}};}
+	
+	public ActionListener CloseAbout() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
+		aboutScreen.get().dispose();
+		aboutIsOpen = false;
 	}};}
 }

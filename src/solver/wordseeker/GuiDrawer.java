@@ -1,15 +1,19 @@
 package solver.wordseeker;
 
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-
 import javax.swing.JFileChooser;
-
+import javax.swing.JFrame;
+import solver.wordseeker.KeyHandler.WindowListner_aboutScreen;
+import api.LButton;
 import api.LFrame;
+import api.LTextArea;
 import api.LTextField;
 
 public class GuiDrawer extends WordseekerSolver {
@@ -17,7 +21,7 @@ public class GuiDrawer extends WordseekerSolver {
 	 * in deze class file staan alle functies die frames maken en invullen
 	 * menu bars staan in de class MenuBar
 	 */
-	void DrawGUI1(){		//maakt het eerste startup schermpje
+	void startupScreen(){		//maakt het eerste startup schermpje
 		
 		label1.setSize(200, 20);
 		label1.setPlace(0, 0);
@@ -68,10 +72,7 @@ public class GuiDrawer extends WordseekerSolver {
 		inputWidth.get().requestFocus();
 	}
 	
-	void DrawGUI2(){		//niet meer nodig!
-	}
-	
-	void DrawGUI3(int letterHoogte, int letterBreedte){		//maakt het 2de scherm met alle hokjes
+	void MainScreen(int letterHoogte, int letterBreedte){		//maakt het 2de scherm met alle hokjes
 		frameHoogte = letterHoogte * 50 + (letterHoogte *10) + 600;
 		frameBreedte = letterBreedte * 50 + (letterBreedte *10) + 400;
 		letterAantal = letterHoogte * letterBreedte;
@@ -151,15 +152,63 @@ public class GuiDrawer extends WordseekerSolver {
 		mainScreen.get().pack();
 		mainScreen.setVisable(true);
         letterVeld[1][1].get().requestFocus();
+        
+        if(letterBreedte > 15 || letterHoogte > 15){
+        	function.Message("", "Het kan zijn dat de woordzoeker niet goed wordt weergegeven, omdat u een te groote woordzoeker wil maken." + System.lineSeparator() + 
+        						"Dit probleem is op dit moment nog niet oplosbaar, maar in een latere update kan dit probleem verholpen worden."+ System.lineSeparator() + 
+        						"Sorry voor het ongemak.");
+        }
 	}
 	
 	void About(){		//maakt het About schermpje
+		aboutIsOpen = true;
+		aboutScreen = new LFrame();
+		aboutScreen.setTitel("About");
+		aboutScreen.get().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		aboutScreen.get().addWindowListener(new WindowListner_aboutScreen());
+		aboutScreen.setBackground(backgroundColor);
+		aboutScreen.get().setResizable(false);
+		aboutScreen.setSize(500, 200);
+		
+		aboutText = new LTextArea();
+		aboutText.setBackground(backgroundColor);
+		aboutText.setForground(textColor);
+		aboutText.setSize(aboutScreen.get().getWidth(), aboutScreen.get().getHeight());
+		aboutText.get().setEditable(false);
+		aboutText.setPlace(0,0);
+		aboutText.getPlc().insets =  new Insets(5, 5, 0, 5);
+		aboutText.setText("WordSeeker Solver v2.0");
+		aboutText.addString("");
+		aboutText.addString("WordSeeker Solver is freeware, feel free to use and distribute the program as long as");
+		aboutText.addString("credits is given to the original makers and current owners.");
+		aboutText.addString("");
+		aboutText.addString("WordSeeker Solver is open source and is hosted on github:");
+		aboutText.addString("https://github.com/TheBlackCrafter/DarkForrest_Beta_V2.0");
+		aboutText.addString("Leave comments/suggestions on the github page shown above.");
+		aboutText.addString("");
+		aboutText.addString("Made by: Sijmen Huizenga");
+
+		aboutStop = new LButton();
+		aboutStop.setText("Ok");
+		aboutStop.setBackground(buttonColor);
+		aboutStop.setForground(textColor);
+		aboutStop.get().setBorder(emptyBorder);
+		aboutStop.setPlace(0, 1);
+		aboutStop.getPlc().anchor = GridBagConstraints.SOUTHEAST;
+		aboutStop.getPlc().insets =  new Insets(12, 5, 8, 8);
+		aboutStop.setSize(125, 25);
+		aboutStop.get().addActionListener(action.CloseAbout());
+		
+		aboutScreen.add(aboutStop);
+		aboutScreen.add(aboutText);
+		aboutScreen.get().pack();
 	}
 	
 	String GetOpenPath(){		//maakt het fileChooser schermpje,  voor het openen
 		filechooser = new JFileChooser();
 		filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		filechooser.setFileFilter(filefilter);
+		filechooser.setAcceptAllFileFilterUsed(false);
 		filechooser.setApproveButtonToolTipText("Open");
 		returnErrorNR = filechooser.showOpenDialog(null);
 		if(returnErrorNR == 0){
@@ -168,14 +217,14 @@ public class GuiDrawer extends WordseekerSolver {
 		else{return "";}
 	}
 	
-	String GetSafePath(){
+	String GetSafePath(){	//maakt het fileChooser schermpje voor het opslaan
 		if(!checker.CheckIfValidAlleHokjes()){
 			return null;
 		}
-		
 		filechooser = new JFileChooser();
 		filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		filechooser.setFileFilter(filefilter);
+		filechooser.setAcceptAllFileFilterUsed(false);
 		filechooser.setDialogType(JFileChooser.SAVE_DIALOG);
 		returnErrorNR = filechooser.showSaveDialog(null);
 		if(returnErrorNR == 0){
@@ -202,8 +251,7 @@ public class GuiDrawer extends WordseekerSolver {
 	  final ProcessBuilder builder = new ProcessBuilder(command);
 	  try {
 		builder.start();
-	  } 
-	  catch (IOException ex) {
+	  }catch (IOException ex) {
 		System.out.println(ex);
 	  }
 	  	System.exit(0);

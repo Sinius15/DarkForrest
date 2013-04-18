@@ -7,7 +7,7 @@ import java.io.File;
 public class SavingSystem extends WordseekerSolver{
 	
 	public ActionListener OpenWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //Om een woordzoeker te openen
-		path = drawer.GetOpenPath();
+		path = draw.GetOpenPath();
 		
 		if(path != ""){
 			file.Open(path, 2, false);
@@ -20,7 +20,7 @@ public class SavingSystem extends WordseekerSolver{
 			else{
 				
 				startupScreen.get().dispose();
-				drawer.DrawGUI3(letterHoogte, letterBreedte);
+				draw.MainScreen(letterHoogte, letterBreedte);
 				teller1 = 1;	//hoogte
 				teller2 = 1;	//breedte
 				teller3 = 3;
@@ -39,7 +39,7 @@ public class SavingSystem extends WordseekerSolver{
 	}};}
 	
 	public ActionListener SaveWordseeker() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //om een woordzoeker op te slaan
-		path = drawer.GetSafePath();
+		path = draw.GetSafePath();
 		if(path == null){}
 		else{
 			      File fileOut = new File(path + ".woordzoeker" );
