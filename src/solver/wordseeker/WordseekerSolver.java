@@ -13,18 +13,18 @@ import api.*;
 
 public class WordseekerSolver {
 
-	public static Font font = new Font("verdana", Font.BOLD, 25);	//het lettertype van alle dingen enzo
+	public static Font font = new Font("verdana", Font.BOLD, 25);		//het lettertype van alle dingen enzo
 	public static int letterHoogte = 0;									//hoeveel letters er in de hoogte zijn
 	public static int letterBreedte = 0;								//hoeveel letters er in de breedte zijn
 	public static int letterAantal = 0;									//hoeveel letters er zijn     is dus letterbreedte * letterhoogte
 	public static int frameHoogte = 0;									//de hoogte van het 2de frame    wordt aangepast aan input van gebruiker
 	public static int frameBreedte = 0;									//de hoogte van het 1de frame	 wordt aangepast aan input van gebruiker
-	public static int teller1;											
-	public static int teller2;												
-	public static int teller3 = 1;											
-	public static int teller4;		
-	public static int teller5;		
-	public static int teller6;		
+	public static int teller1;
+	public static int teller2;
+	public static int teller3 = 1;
+	public static int teller4;
+	public static int teller5;
+	public static int teller6;
 	public static int teller7;
 	public static int teller8;
 	public static int teller1X;
@@ -40,20 +40,21 @@ public class WordseekerSolver {
 	public static String gezochtWoord;									//het woord dat gezocht wordt(wordt alleen gebruikt int checker)
 	public static String InportFile[][] = new String[10][100000];		//worden bestanden in opgeslagen, het eerste cijfer is de naam, het 2de is het hoeveelheids cijfer,  naam0 = config; naam1=woordenboek, naam2 = openWoordzoeker   
 	public static String path;											//wordt gebruikt als Pad naar bestanden
-	
+
 	public static char randomChar;										//gebruikt om een random char te maken, in combinatie met int random
 	public static Random random;										//random functie
 	public static File configPath = new File(System.getProperty("user.dir") + "\\Config.ini");
 	public static boolean welkeCoordsHebIkNetBekeken[][] = new boolean[22][22];
 	public static Scanner scanner;										//gewoon een scanner voor inlezen van files
 
-	public static Zoeker zoeker = new Zoeker();							//deze alinia is voor het objectgeorienteerd programmeren, objecten
-	public static GetLetter get = new GetLetter();						
-	public static Checker checker = new Checker();					
-	public static MiscFunction function = new MiscFunction();				
-	public static GuiDrawer draw = new GuiDrawer();					
-	public static FileHandler file = new FileHandler();					
-	public static MenuBar bar = new MenuBar();							
+	//deze alinia is voor het objectgeorienteerd programmeren, objecten
+	public static Zoeker zoeker = new Zoeker();
+	public static GetLetter get = new GetLetter();
+	public static Checker checker = new Checker();
+	public static MiscFunction function = new MiscFunction();
+	public static GuiDrawer draw = new GuiDrawer();
+	public static FileHandler file = new FileHandler();
+	public static MenuBar bar = new MenuBar();
 	public static Action action = new Action();
 	public static Config config = new Config();
 	public static KeyHandler_ScreenOne keyHandler1 = new KeyHandler_ScreenOne();
@@ -67,7 +68,7 @@ public class WordseekerSolver {
 	public static FileNameExtensionFilter filefilter = new FileNameExtensionFilter("wordseeker files", "woordzoeker") ;
 	public static String fileOutString;
 	public static File fileOut;
-	
+
 	public static Color backgroundColor;											//alles in deze allinea is voor de config file
 	public static Color textfieldColor;
 	public static Color buttonColor;
@@ -83,7 +84,7 @@ public class WordseekerSolver {
 	public static boolean zoekDiagonaal = true;
 	public static boolean laadWoordenboek = true;
 	public static BufferedWriter out;
-			
+
 	/*hieronder alles voor GUI layout*/
 	public static LFrame startupScreen;							  ///////////////
 	public static LButton startupButton = new LButton();			//
@@ -129,7 +130,7 @@ public class WordseekerSolver {
 		thread0.Start();
 		thread1.Start();
 	}
-	
+
 	public static void mainProgram() {
 		
 		if(config.Init() == false){
