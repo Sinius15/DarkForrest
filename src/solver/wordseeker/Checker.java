@@ -1,7 +1,14 @@
 package solver.wordseeker;
 
+	/** 
+	 * Zitten de functies in die dingen checken.
+	 */
 public class Checker extends WordseekerSolver{
-
+	
+	/** 
+	 * Kijkt of alle hokjes goed zijn ingevult met één letter.
+	 * @return of alles goed is ingevult
+	 */
 	boolean CheckIfValidAlleHokjes(){
 		teller1 = 1;
 		while(teller1 < letterBreedte){
@@ -34,6 +41,10 @@ public class Checker extends WordseekerSolver{
 		
 	}
 
+	/** 
+	 * Kijkt of het beginscherm goed is ingevult.
+	 * @return of alles goed is ingevult
+	 */
 	boolean CheckIfValidStartScreen(){
 		if(inputHeight.getText().length() == 0 || inputWidth.getText().length() == 0){
 			function.Message("Stop", "Je moet twee cijfers invullen van drie tot en met twintig.");
@@ -48,7 +59,6 @@ public class Checker extends WordseekerSolver{
 			return false;
 		}
 		else{return true;}
-		
 	}
 	
 }

@@ -38,7 +38,6 @@ public class MiscFunction extends WordseekerSolver{
 		while(teller1 <= letterBreedte){		
 			teller2 = 1;
 			while(teller2 <= letterHoogte){
-				System.out.println("nu ben ik in letterVeld["+teller1+"]["+teller2+"]");
 				letterVeld[teller1][teller2].setBackground(textfieldColor);
 				teller2++;
 			}

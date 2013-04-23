@@ -19,14 +19,7 @@ public class WordseekerSolver {
 	public static int letterAantal = 0;									//hoeveel letters er zijn     is dus letterbreedte * letterhoogte
 	public static int frameHoogte = 0;									//de hoogte van het 2de frame    wordt aangepast aan input van gebruiker
 	public static int frameBreedte = 0;									//de hoogte van het 1de frame	 wordt aangepast aan input van gebruiker
-	public static int teller1;
-	public static int teller2;
-	public static int teller3 = 1;
-	public static int teller4;
-	public static int teller5;
-	public static int teller6;
-	public static int teller7;
-	public static int teller8;
+	public static int teller1 = 1, teller2 = 1, teller3 = 1, teller4 = 1, teller5 = 1, teller6 = 1, teller7 = 1, teller8 = 1;
 	public static int teller1X;
 	public static int teller1Y;	
 	public static int lengteGezochtWoord;								//lengte van het woord wat gezocht moet worden
@@ -132,7 +125,6 @@ public class WordseekerSolver {
 	}
 
 	public static void mainProgram() {
-		
 		if(config.Init() == false){
 			file.Copy(new File("res/Config.ini"), configPath);
 			config.Init();

@@ -7,9 +7,12 @@ import javax.swing.BorderFactory;
 
 public class Config extends WordseekerSolver{
 	
+	/** 
+	 * Initializeert de config file.
+	 * @return of hij de config heeft kunnen vinden.
+	 */
 	boolean Init(){
 		try{
-		System.out.println(configPath.getAbsolutePath());
 		file.Open(configPath.getAbsolutePath(), 0, true);
 	
 		backgroundColor = new Color(Integer.parseInt(InportFile[0][1]),Integer.parseInt(InportFile[0][2]),Integer.parseInt(InportFile[0][3]));

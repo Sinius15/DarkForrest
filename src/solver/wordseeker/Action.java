@@ -48,8 +48,6 @@ public class Action extends WordseekerSolver{
 		if(checker.CheckIfValidStartScreen() == true){
 			letterBreedte = Integer.parseInt(inputWidth.getText());
 			letterHoogte = Integer.parseInt(inputHeight.getText());
-			System.out.println("de hoogte is: " + letterHoogte);
-			System.out.println("de Breedte is: "+ letterBreedte);
 			startupScreen.get().dispose();
 			draw.MainScreen(letterHoogte, letterBreedte);
 		}
@@ -68,7 +66,7 @@ public class Action extends WordseekerSolver{
 	
 	/** 
 	 * Sluit het about schermpje.
-	 * <h6>Kan niet via aboutscreen.dispose() omdat je dan hem niet opniew kan openen.</h6>
+	 * Kan niet via aboutscreen.dispose() omdat je dan hem niet opniew kan openen.
 	 */
 	public ActionListener CloseAbout() {return new ActionListener() {@Override public void actionPerformed(ActionEvent e) {  //is de eerste knop in het begin
 		aboutScreen.get().dispose();

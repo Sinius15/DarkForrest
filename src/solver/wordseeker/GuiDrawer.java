@@ -103,7 +103,6 @@ public class GuiDrawer extends WordseekerSolver {
 			}
 			teller1++;
 		}
-		System.out.println(letterBreedte+1);
 		label3.setPlace(0, letterHoogte+1);
 		label3.setGridSize(letterBreedte+1, 1);
 		label3.setSize(52*letterBreedte-2, 20);
@@ -239,7 +238,6 @@ public class GuiDrawer extends WordseekerSolver {
 	  final File currentJar = new File(WordseekerSolver.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 
 	  if(!currentJar.getName().endsWith(".jar")){
-		  System.out.println("I am not a .jar    sorry!");
 		  return;
 	  }
 
