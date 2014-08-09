@@ -182,7 +182,7 @@ public class GuiDrawer extends WordseekerSolver {
 		aboutText.addString("credit is given to the original makers and current owners.");
 		aboutText.addString("");
 		aboutText.addString("WordSeeker Solver is open source and is hosted on github:");
-		aboutText.addString("https://github.com/TheBlackCrafter/DarkForrest_Beta_V2.0");
+		aboutText.addString("https://github.com/Sinius15/DarkForrest/");
 		aboutText.addString("Leave comments/suggestions on the github page shown above.");
 		aboutText.addString("");
 		aboutText.addString("Made by: Sinius15");
