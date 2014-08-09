@@ -185,7 +185,7 @@ public class GuiDrawer extends WordseekerSolver {
 		aboutText.addString("https://github.com/TheBlackCrafter/DarkForrest_Beta_V2.0");
 		aboutText.addString("Leave comments/suggestions on the github page shown above.");
 		aboutText.addString("");
-		aboutText.addString("Made by: Sijmen Huizenga");
+		aboutText.addString("Made by: Sinius15");
 
 		aboutStop = new LButton();
 		aboutStop.setText("Ok");
